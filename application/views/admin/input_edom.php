@@ -1,13 +1,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
   
-  
   $('#btn_save').click(function(){
       var semester  = $('#semester').val();
       var prodi     = $('#prodi').val();
       var dosen     = $('#dosen').val();
       var matkul    = $('#matkul').val();
-      var sks    = $('#sks').val();
+      var sks       = $('#sks').val();
       var no_1      = $("input[name='no_1']:checked").val();
       var no_2      = $("input[name='no_2']:checked").val();
       var no_3      = $("input[name='no_3']:checked").val();     
@@ -17,8 +16,8 @@ $(document).ready(function(){
       var no_7      = $("input[name='no_7']:checked").val();
       var no_8      = $("input[name='no_8']:checked").val();
       var no_9      = $("input[name='no_9']:checked").val();   
-      var no_10      = $("input[name='no_10']:checked").val(); 
-      var saran    = $('#saran').val();
+      var no_10     = $("input[name='no_10']:checked").val(); 
+      var saran     = $('#saran').val();
       $.ajax({
          url: '<?php echo base_url(); ?>admin/master/save_edom',
          type: 'POST',
@@ -37,11 +36,11 @@ $(document).ready(function(){
           no_8: no_8,
           no_9: no_9,
           no_10: no_10,
-          saran: saran
-          
+          saran: saran          
         },
-         error: function() {
-          alert('Data harus di isi lengkap');
+         error: function(XMLHttpRequest, textStatus, errorThrown) {
+          //alert('Data harus di isi lengkap');
+          alert(errorThrown + ' ' + textStatus);
          },
          success: function(data) {          
           $.alert({           
@@ -64,29 +63,27 @@ $(document).ready(function(){
         <div class="form-row">
           <div class="form-group col-md-2">
            <label for="bank">Tahun Ajaran</label>
-           <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
-			  <option></option>
-			  <option>20181</option>
-			  <option>20182</option>
-			  <option>20191</option>
-			  <option>20192</option>
-		
-			</select>
+           <select id="semester" name="semester" class="form-control form-control-chosen" data-placeholder="Please select...">
+            <option></option>
+            <option>20181</option>
+            <option>20182</option>
+            <option>20191</option>
+            <option>20192</option>        
+          </select>
            </div>
        <div class="form-group col-md-3">
             <label for="prodi">Prodi</label>
-            <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
-			  <option></option>
-			  <option>S1/Teknik Mesin</option>
-			  <option>S1/Teknik Elektro</option>
-			  <option>S1/Teknik Sipil</option>
-			  <option>S1/Teknik Arsitektur</option>
-			  <option>S1/Teknik Industri</option>
-			  <option>S1/Teknik Informatika</option>
-			  <option>D3/Teknik Mesin</option>
-			  <option>D3/Teknik Elektro</option>
-		
-			</select>
+            <select id="prodi" name="prodi" class="form-control form-control-chosen" data-placeholder="Please select...">
+              <option></option>
+              <option>S1/Teknik Mesin</option>
+              <option>S1/Teknik Elektro</option>
+              <option>S1/Teknik Sipil</option>
+              <option>S1/Teknik Arsitektur</option>
+              <option>S1/Teknik Industri</option>
+              <option>S1/Teknik Informatika</option>
+              <option>D3/Teknik Mesin</option>
+              <option>D3/Teknik Elektro</option>         
+            </select>
            </div>
           <div class="form-group col-md-3">
             <label for="matkul">Mata Kuliah</label>
@@ -98,19 +95,17 @@ $(document).ready(function(){
           </div>
           <div class="form-group col-md-1">
             <label for="sks">SKS</label>
-           <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
-			  <option></option>
-			  <option>1</option>
-			  <option>2</option>
-			  <option>3</option>
-			  <option>4</option>
-			  <option>5</option>
-			  <option>6</option>
-			  <option>7</option>
-			  <option>8</option>
-			
-		
-			</select>
+            <select id="sks" name="sks" class="form-control form-control-chosen" data-placeholder="Please select...">
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>                      
+            </select>
           </div>
         </div>
         
@@ -328,9 +323,9 @@ $(document).ready(function(){
          
        
        <div class="form-group">
-    <label for="exampleFormControlTextarea1">Saran</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
+          <label for="saran">Saran</label>
+          <textarea class="form-control" id="saran"  name="saran" rows="3"></textarea>
+        </div>
         </div>
       </div>
     </div>
