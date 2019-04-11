@@ -121,8 +121,8 @@ class Model_penting extends CI_model {
                 'jawaban8'       => $this->input->post('no_8'), 
                 'jawaban9'       => $this->input->post('no_9'), 
                 'jawaban10'      => $this->input->post('no_10'),
-                'saran'          => $this->input->post('saran')
-               
+                'saran'          => $this->input->post('saran'),
+                'user_update'    => $this->session->userdata('userid')               
             );
         $result=$this->db->insert('evaluasi',$data);
         return $result;
