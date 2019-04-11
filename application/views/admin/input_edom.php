@@ -88,6 +88,15 @@ $(document).ready(function(){
           <div class="form-group col-md-3">
             <label for="matkul">Mata Kuliah</label>
             <input type="text" class="form-control text-left" id="matkul" name="matkul">
+            <select class="form-control form-control-chosen" name="prodi" id="prodi">
+              <option value="-">-- Pilih --</option>
+                <?php                                        
+                  foreach ($list_prodi->result() as $value) {                             
+
+                  ?>
+                  <option value="<?php echo $value->kd_prodi; ?>" ><?php echo $value->nama_prodi; ?></option>
+            <?php } ?>
+            </select>  
           </div>
           <div class="form-group col-md-3">
             <label for="dosen">Dosen</label>
