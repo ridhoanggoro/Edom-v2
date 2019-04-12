@@ -56,8 +56,7 @@
                     no_10: no_10,
                     saran: saran
                 },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    //alert('Data harus di isi lengkap');
+                error: function(XMLHttpRequest, textStatus, errorThrown) {                    
                     $.alert({
                         title: 'Gagal!',
                         content: 'Data Belum Lengkap!',

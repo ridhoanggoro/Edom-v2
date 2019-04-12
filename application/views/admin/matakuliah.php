@@ -53,34 +53,29 @@
 				  <div class="form-group col-md-12">
 					<label for="sks">SKS</label>
 					 <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
-              <option></option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>      
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>       
             </select>
 				  </div>
           </div>
            <div class="form-row">
              <div class="form-group col-md-12">
              <label for="prodi">Prodi</label>
-             <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
-              <option></option>
-              <option>S1/Teknik Mesin</option>
-              <option>S1/Teknik Elektro</option>
-              <option>S1/Teknik Sipil</option>
-              <option>S1/Teknik Arsitektur</option>
-              <option>S1/Teknik Industri</option>
-              <option>S1/Teknik Informatika</option>
-              <option>D3/Teknik Mesin</option>
-              <option>D3/Teknik Elektro</option>
-        
-            </select>
-                  </div>
+             <select id="prodi" name="prodi" class="form-control form-control-chosen" data-placeholder="Please select...">
+                  <option></option>
+                  <?php foreach ($daftar_prodi->result() as $value) { ?>
+                  <option value="<?php echo $value->kd_prodi; ?>">
+                      <?php echo $value->jenjang.'-'.$value->nama_prodi; ?>
+                  </option>
+                  <?php } ?>
+              </select>
+            </div>
 				</div>							
 		  </div>
 		  <div class="modal-footer">
@@ -111,46 +106,42 @@
                    
                   <div class="form-group col-md-4">
                     <label for="kd_matkul">Kode Matakuliah</label>
-                    <input type="text" class="form-control" id="kd_matkul" name="kd_matkul">
+                    <input type="text" class="form-control" id="kd_matkul_edit" name="kd_matkul_edit">
                  
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-8">
                     <label for="nama_matkul">Nama </label>
-                    <input type="text" class="form-control" id="nama_matkul" name="nama_matkul">
+                    <input type="text" class="form-control" id="nama_matkul_edit" name="nama_matkul_edit">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="sks">SKS</label>
-                    <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
-              <option></option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>       
-            </select>
+                    <select id="single" name="sks_edit" name="sks_edit" class="form-control form-control-chosen" data-placeholder="Please select...">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>       
+                    </select>
                   </div>
                   </div>
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="prodi">Prodi</label>
-                  <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
-              <option></option>
-              <option>S1/Teknik Mesin</option>
-              <option>S1/Teknik Elektro</option>
-              <option>S1/Teknik Sipil</option>
-              <option>S1/Teknik Arsitektur</option>
-              <option>S1/Teknik Industri</option>
-              <option>S1/Teknik Informatika</option>
-              <option>D3/Teknik Mesin</option>
-              <option>D3/Teknik Elektro</option>
-        
-            </select>
+                    <select id="prodi_edit" name="prodi_edit" class="form-control form-control-chosen" data-placeholder="Please select...">
+                        <option></option>
+                        <?php foreach ($daftar_prodi->result() as $value) { ?>
+                        <option value="<?php echo $value->kd_prodi; ?>">
+                            <?php echo $value->jenjang.'-'.$value->nama_prodi; ?>
+                        </option>
+                        <?php } ?>
+                    </select>
                   </div>
                 </div>                
           </div>
@@ -256,11 +247,11 @@
  
         //get data for update record
         $('#tampil_data').on('click','.item_edit',function(){
-            var seq_id          = $(this).data('seq_id');
-            var kd_matkul       = $(this).data('kd_matkul');
-            var nama_matkul            = $(this).data('nama_matkul');
+            var seq_id         = $(this).data('seq_id');
+            var kd_matkul      = $(this).data('kd_matkul');
+            var nama_matkul    = $(this).data('nama_matkul');
             var sks            = $(this).data('sks');
-            var prodi   = $(this).data('prodi');           
+            var prodi          = $(this).data('prodi');           
              
             $('#Modal_Edit').modal('show');
             $('[name="seq_id"]').val(seq_id);
@@ -297,8 +288,7 @@
  
         //get data for delete record
         $('#tampil_data').on('click','.item_delete',function(){
-            var seq_id = $(this).data('seq_id');
-             
+            var seq_id = $(this).data('seq_id');             
             $('#Modal_Delete').modal('show');
             $('[name="seq_id_delete"]').val(seq_id);
         });

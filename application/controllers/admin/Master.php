@@ -54,6 +54,7 @@ class Master extends CI_Controller {
   {
     $isi['title']       = 'Daftar Matakuliah';
     $isi['content']     = 'admin/matakuliah';
+    $isi['daftar_prodi']  = $this->model_penting->getListProdi('ALL'); 
     $this->load->view('overview', $isi);
   }
   
