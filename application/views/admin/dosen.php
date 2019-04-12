@@ -45,9 +45,8 @@
                   <div class="form-group col-md-8">
                     <label for="role">Role</label>
                     <select class="custom-select mr-sm-2" id="role" name="role">
-                        <option selected>Pilih Role...</option>
-                               
-                        <option value="DOSEN">DOSEN</option>
+                        <option selected>Pilih Role...</option>                               
+                        <option value="DOSEN" selected="selected">DOSEN</option>
                         <option value="ADMIN">ADMIN</option>
                     </select>
                   </div> 
