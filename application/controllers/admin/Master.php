@@ -83,10 +83,23 @@ class Master extends CI_Controller {
 
   public function pengisian_edom()
   {
-	$isi['title']       = 'Input EDOM';
-	$isi['content']     = 'admin/input_edom';
-	$this->load->view('overview', $isi);
+    $isi['title']         = 'Input EDOM';
+    $isi['content']       = 'admin/input_edom';
+    $isi['daftar_matkul'] = $this->model_penting->getListMatkul('ALL');
+    $isi['daftar_prodi']  = $this->model_penting->getListProdi('ALL'); 
+    $isi['daftar_dosen']  = $this->model_penting->getListDosen('ALL'); 
+    $this->load->view('overview', $isi);
   }
+
+  function get_sks(){
+    $value = $this->input->post('value');
+    $data  = $this->model_penting->getSks($value);
+    if ($data->num_rows() > 0)
+		{
+		   $row = $data->row_array(); 				  
+		   echo $row['sks'];
+		}		
+	}
 	
 	public function slip_gaji()
 	{

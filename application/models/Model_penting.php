@@ -103,8 +103,7 @@ class Model_penting extends CI_model {
         return $result;
     }
 	function save_edom()
-    {       
-       
+    {              
         $data = array(
                 'semester'       => $this->input->post('semester'), 
                 'prodi'          => $this->input->post('prodi'), 
@@ -143,42 +142,78 @@ class Model_penting extends CI_model {
 	
 	function getListDosen($id='')
 	{
-		$sql = "SELECT '' AS kd_dosen, '----PILIH DOSEN----' AS nama, '----PILIH DOSEN----' AS nama_lengkap UNION SELECT DISTINCT dosen.kd_dosen, dosen.nama,dosen.nama_lengkap FROM evaluasi INNER JOIN dosen on dosen.kd_dosen=evaluasi.dosen WHERE evaluasi.semester='$id'";
-				
-		$query = $this->db->query($sql);
-		$dosen_list = array();
-		
-		if($query->result()){
-            foreach ($query->result() as $dosen) {
-                $dosen_list[$dosen->kd_dosen] = $dosen->nama_lengkap;
-            }
-            return $dosen_list;
-        } 
-        else 
+        if ($id=='ALL')
         {
-            return FALSE;
+            $this->db->order_by('nama', 'ASC');
+            $this->db->where('role', 'DOSEN');
+            $query = $this->db->get('dosen');
+            return $query;
+        }
+        else {
+            $sql = "SELECT '' AS kd_dosen, '----PILIH DOSEN----' AS nama, '----PILIH DOSEN----' AS nama_lengkap UNION SELECT DISTINCT dosen.kd_dosen, dosen.nama,dosen.nama_lengkap FROM evaluasi INNER JOIN dosen on dosen.kd_dosen=evaluasi.dosen WHERE evaluasi.semester='$id'";
+                    
+            $query = $this->db->query($sql);
+            $dosen_list = array();
+            
+            if($query->result()){
+                foreach ($query->result() as $dosen) {
+                    $dosen_list[$dosen->kd_dosen] = $dosen->nama_lengkap;
+                }
+                return $dosen_list;
+            } 
+            else 
+            {
+                return FALSE;
+            }
         }
 	}
 	
-	function getListMatkul($id='')
-	{
-		$sql = "SELECT '' AS kd_matkul, '----PILIH MATAKULIAH----' AS nama_matkul UNION SELECT DISTINCT matakuliah.kd_matkul,CONCAT(matakuliah.nama_matkul, ' - ',matakuliah.sks, ' SKS') AS nama_matkul from matakuliah INNER JOIN evaluasi ON evaluasi.matkul=matakuliah.kd_matkul WHERE evaluasi.dosen='$id'";
-				
-		$query = $this->db->query($sql);
-		$matkul_list = array();
-		
-		if($query->result()){
-            foreach ($query->result() as $matkul) {
-                $matkul_list[$matkul->kd_matkul] = $matkul->nama_matkul;
-            }
-            return $matkul_list;
-        } 
-        else 
+    function getListMatkul($id='')
+    {
+        if ($id=='ALL')
         {
-            return FALSE;
+            $this->db->order_by('nama_matkul', 'ASC');
+            $query = $this->db->get('matakuliah');
+            return $query;
         }
-	}
+        else {
+            $sql = "SELECT '' AS kd_matkul, '----PILIH MATAKULIAH----' AS nama_matkul UNION SELECT DISTINCT matakuliah.kd_matkul,CONCAT(matakuliah.nama_matkul, ' - ',matakuliah.sks, ' SKS') AS nama_matkul from matakuliah INNER JOIN evaluasi ON evaluasi.matkul=matakuliah.kd_matkul WHERE evaluasi.dosen='$id'";				
+            $query = $this->db->query($sql);
+            $matkul_list = array();
+            
+            if($query->result()){
+                foreach ($query->result() as $matkul) {
+                    $matkul_list[$matkul->kd_matkul] = $matkul->nama_matkul;
+                }
+                return $matkul_list;
+            } 
+            else 
+            {
+                return FALSE;
+            }
+        }
+		
+    }
 
+    function getListProdi($id='')
+    {
+        if ($id=='ALL')
+        {
+            $this->db->order_by('jenjang', 'ASC');
+            $query = $this->db->get('prodi');
+            return $query;
+        } else {
+            $this->db->order_by('nama_prodi', 'ASC');
+            $query = $this->db->get('prodi');
+            return $query->result();
+        }
+    }
+   
+    function getSks($id)
+    {
+        $this->db->where('kd_matkul', $id);
+        return $this->db->get('matakuliah');
+    }
 
     function dataevaluasidosen_prodi($thn_akademik, $dosen, $matkul, $prodi)
     {
