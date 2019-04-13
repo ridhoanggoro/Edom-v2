@@ -108,7 +108,16 @@ class Master extends CI_Controller {
 		$isi['content']			= 'cetak_slip';
 		$isi['daftar_karyawan']	= $this->model_penting->list_karyawan();
 		$this->load->view('overview', $isi);
-	}
+  }
+  
+  public function report_edom()
+  {
+    $isi['title']         = 'Report EDOM';
+    $isi['content']       = 'admin/report_edom';
+    $isi['thn_akademik'] 	= $this->model_penting->ThnAkademikKuisioner();
+		$isi['list_prodi']		= $this->model_penting->ProdiKuisioner();
+    $this->load->view('overview', $isi);
+  }
 
 	public function cetak_slip()
 	{

@@ -11,7 +11,6 @@
           <option value="-">-- Pilih --</option>
              <?php                                        
               foreach ($thn_akademik->result() as $value) {                             
-
               ?>
           <option value="<?php echo $value->semester; ?>" ><?php echo $value->semester; ?></option>
         <?php } ?>
@@ -23,7 +22,6 @@
           <option value="-">-- Pilih --</option>
              <?php                                        
               foreach ($list_prodi->result() as $value) {                             
-
               ?>
           <option value="<?php echo $value->kd_prodi; ?>" ><?php echo $value->nama_prodi; ?></option>
         <?php } ?>
@@ -70,7 +68,6 @@
     var chartTitle    = 'Angket Penilaian Dosen';  
     var chartCategories = '';
     var chartData   = '';
-
     $('#wrap').on('change', '#matkul', function() {
       //alert('tes');
           var id = $(this).val();
