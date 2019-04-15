@@ -36,6 +36,9 @@
                 $.each(response,function(index,data){
                     $('#matkul').append('<option value="'+data['kd_matkul']+'">'+data['nama_matkul']+'</option>');
                 });
+
+                $("#matkul").trigger("chosen:updated");
+                $("#matkul").trigger("liszt:updated");
                 }
             });
         });
@@ -128,11 +131,6 @@
                         <label for="matkul">Mata Kuliah</label>
                         <select id="matkul" name="matkul" class="form-control form-control-chosen" data-placeholder="Please select...">
                             <option value="-">-- Pilih --</option>
-                            <!-- <?php foreach ($daftar_matkul->result() as $value) { ?>
-                                <option value="<?php echo $value->kd_matkul; ?>">
-                                    <?php echo $value->nama_matkul; ?>
-                                </option>
-                                <?php } ?> -->
                         </select>
                     </div>
                     <div class="form-group col-md-3">
