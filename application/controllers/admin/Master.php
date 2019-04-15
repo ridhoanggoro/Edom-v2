@@ -80,7 +80,13 @@ class Master extends CI_Controller {
   function save_edom(){
 		$data=$this->model_penting->save_edom();
 		echo json_encode($data);
-	}
+  }
+  
+  function get_matkul_prodi(){
+    $data=$this->model_penting->list_matakuliah('FILTERED');
+    echo json_encode($data);
+  }
+
 
   public function pengisian_edom()
   {
