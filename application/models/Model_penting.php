@@ -61,11 +61,15 @@ class Model_penting extends CI_model {
         {
           $postData = $this->input->post();          
           $this->db->where('prodi', $postData['id_prodi']);
+          $this->db->order_by('nama_matkul', 'asc');
           $q = $this->db->get('matakuliah');
           $response = $q->result_array();
           return $response;
         } else {
+            
+            $this->db->order_by('nama_matkul', 'asc');
             $result = $this->db->get('matakuliah');
+            
             return $result->result();
         }
     }
