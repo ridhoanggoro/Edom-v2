@@ -1,6 +1,3 @@
-<p class="mb-4">Daftar Matakuliah</p>
-
-<!-- DataTales Example -->
 <div class="card shadow">
 	<div class="card-header">	  
 	  <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><i class="fas fa-user-plus"></i> Tambah Matakuliah</a></div>
@@ -105,7 +102,7 @@
                    
                  <div class="form-group col-md-4">
                     <label for="kd_matkul">Kode Matakuliah</label>
-                    <input type="text" class="form-control" id="kd_matkul_edit" name="kd_matkul_edit">
+                    <input type="text" class="form-control" id="kd_matkul_edit" name="kd_matkul_edit" readonly>
                 </div>
         </div>
                 <div class="form-row">
@@ -115,7 +112,7 @@
                   </div>
                 </div>
                 <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-2">
             <label for="sks">SKS</label>
             <select id="sks_edit" name="sks_edit" class="custom-select mr-sm-2" data-placeholder="Please select...">
               <option value=""></option>
@@ -203,8 +200,8 @@
                                 '<td>'+data[i].sks+'</td>'+
                                 '<td>'+data[i].prodi+'</td>'+
                                 '<td style="text-align:right;">'+
-                                    '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-seq_id="'+data[i].seq_id+'" data-kd_matkul="'+data[i].kd_matkul+'" data-nama_matkul="'+data[i].nama_matkul+'"data-sks="'+data[i].sks+'"data-prodi="'+data[i].prodi+'">Edit</a>'+' '+
-                                    '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-seq_id="'+data[i].seq_id+'">Delete</a>'+
+                                    '<a href="javascript:void(0);" class="btn btn-info btn-circle btn-sm item_edit" data-toggle="tooltip" data-placement="top" title="Edit" data-seq_id="'+data[i].seq_id+'" data-kd_matkul="'+data[i].kd_matkul+'" data-nama_matkul="'+data[i].nama_matkul+'"data-sks="'+data[i].sks+'"data-prodi="'+data[i].prodi+'"><i class="fas fa-search"></i></a>'+' '+
+                                    '<a href="javascript:void(0);" class="btn btn-danger btn-circle btn-sm item_delete" data-toggle="tooltip" data-placement="top" title="Delete" data-seq_id="'+data[i].seq_id+'"><i class="fas fa-trash"></i></a>'+
                                 '</td>'+
                                 '</tr>';
                     }
