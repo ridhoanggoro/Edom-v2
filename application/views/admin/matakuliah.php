@@ -52,7 +52,7 @@
 				<div class="form-row">
 				  <div class="form-group col-md-12">
 					<label for="sks">SKS</label>
-					 <select id="single" class="form-control form-control-chosen" data-placeholder="Please select...">
+					 <select id="sks" name="sks" class="form-control form-control-chosen" data-placeholder="Please select...">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -101,14 +101,13 @@
           </div>
           <div class="modal-body">
                 <div class="form-row">
-                
                     <input type="text" hidden="" class="form-control" id="seq_id" name="seq_id">
                    
-                  <div class="form-group col-md-4">
+                 <div class="form-group col-md-4">
                     <label for="kd_matkul">Kode Matakuliah</label>
                     <input type="text" class="form-control" id="kd_matkul_edit" name="kd_matkul_edit">
-                 
                 </div>
+        </div>
                 <div class="form-row">
                   <div class="form-group col-md-8">
                     <label for="nama_matkul">Nama </label>
@@ -116,25 +115,25 @@
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label for="sks">SKS</label>
-                    <select id="single" name="sks_edit" name="sks_edit" class="form-control form-control-chosen" data-placeholder="Please select...">
-                      <option value=""></option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>       
-                    </select>
-                  </div>
+            <div class="form-group col-md-12">
+            <label for="sks">SKS</label>
+            <select id="sks_edit" name="sks_edit" class="custom-select mr-sm-2" data-placeholder="Please select...">
+              <option value=""></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>       
+            </select>
+            </div>
                   </div>
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="prodi">Prodi</label>
-                    <select id="prodi_edit" name="prodi_edit" class="form-control form-control-chosen" data-placeholder="Please select...">
+                    <select id="prodi_edit" name="prodi_edit" class="custom-select mr-sm-2" data-placeholder="Please select...">
                         <option></option>
                         <?php foreach ($daftar_prodi->result() as $value) { ?>
                         <option value="<?php echo $value->kd_prodi; ?>">
@@ -144,7 +143,7 @@
                     </select>
                   </div>
                 </div>                
-          </div>
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             <button type="button" type="submit" id="btn_update" class="btn btn-primary">Update</button>
@@ -152,6 +151,7 @@
         </div>
       </div>
     </div>
+  </div>
 </form>
 <!--END MODAL EDIT-->
 

@@ -40,7 +40,7 @@
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'dosen' ? 'active': '' ?>" href="<?php echo site_url('admin/master/dosen'); ?>">Master Dosen</a>  
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'matakuliah' ? 'active': '' ?>" href="<?php echo site_url('admin/master/matakuliah'); ?>">Master Matakuliah</a>      		
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'pengisian_edom' ? 'active': '' ?>" href="<?php echo site_url('admin/master/pengisian_edom'); ?>">Input Edom</a>
-        <a class="collapse-item <?php echo $this->uri->segment(3) == 'laporan' ? 'active': '' ?>" href="<?php echo site_url('admin/master/laporan'); ?>">Report</a>
+        <a class="collapse-item <?php echo $this->uri->segment(3) == 'laporan' ? 'active': '' ?>" href="<?php echo site_url('admin/master/laporan'); ?>">Grafik Edom</a>
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'report_edom' ? 'active': '' ?>" href="<?php echo site_url('admin/master/report_edom'); ?>">Report Edom</a>
       </div>
     </div>

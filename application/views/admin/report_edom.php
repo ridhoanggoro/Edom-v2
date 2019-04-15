@@ -1,6 +1,7 @@
+<form method="post" action="<?php echo base_url(); ?>admin/master/cetak_report_edom" >
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Grafik Penilaian</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Report Penilaian</h6>
   </div>
   <div class="card-body">
     <div class="form-row">
@@ -20,8 +21,12 @@
              <?php foreach ($list_prodi->result() as $value) { ?>
           <option value="<?php echo $value->kd_prodi; ?>" ><?php echo $value->nama_prodi; ?></option>
         <?php } ?>
-        </select>  
+        </select>
       </div>
     </div>
+	<div>
+		<button type="submit" id="btn_print" class="btn btn-primary">Print Report</button>
+	</div>
   </div>
 </div>
+</form>

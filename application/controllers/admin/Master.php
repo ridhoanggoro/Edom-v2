@@ -32,8 +32,8 @@ class Master extends CI_Controller {
 	}
 	
 	function list_dosen(){
-        $data=$this->model_penting->list_dosen();
-        echo json_encode($data);
+    $data=$this->model_penting->list_dosen();
+    echo json_encode($data);
   }
 
   function save_dosen(){
@@ -59,8 +59,8 @@ class Master extends CI_Controller {
   }
   
   function list_matakuliah(){
-        $data=$this->model_penting->list_matakuliah();
-        echo json_encode($data);
+    $data=$this->model_penting->list_matakuliah();
+    echo json_encode($data);
   }
 
   function save_matakuliah(){
@@ -118,6 +118,40 @@ class Master extends CI_Controller {
 		$isi['list_prodi']		= $this->model_penting->ProdiKuisioner();
     $this->load->view('overview', $isi);
   }
+
+  public function cetak_report_edom()
+	{
+    $periode = $this->input->post('thn_akademik');
+    $prodi  = $this->input->post('prodi');
+
+    $this->load->library('pdf');
+    $pdf                   = $this->pdf->load();
+    $pdf                   = new mPDF('win-1252', 'A4-L', '', '', 10, 10, 15, 1, 30, 30);
+    $pdf->useOnlyCoreFonts = false; // false is default
+    $pdf->SetProtection(array(
+        'print'
+    ));
+    $pdf->SetTitle("EDOM");
+    $pdf->SetAuthor("Universitas Pancasila");
+    
+    $pdf->SetDisplayMode('fullpage');
+    
+    ini_set('memory_limit', '256M');
+
+    $daftar_prodi = $this->model_penting->ambil_nama_prodi($prodi);
+    if ($daftar_prodi->num_rows() > 0) {
+      foreach ($daftar_prodi->result() as $row) {
+        $data['nama_prodi'] = $row->nama_prodi;
+      }
+    }
+    $data['hasil'] = $this->model_penting->data_report_edom($periode, $prodi);
+		$html = $this->load->view('dokumen/edom', $data, true);
+    $pdf->WriteHTML($html);
+    $output = 'REPORT_EDOM_'.date("Y-m-d H:i:s").'.pdf';
+    $pdf->Output("$output", 'D'); 
+    exit();
+  }
+    
 
 	public function cetak_slip()
 	{
