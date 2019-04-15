@@ -54,10 +54,20 @@ class Model_penting extends CI_model {
         return $result;
     }
 
-    function list_matakuliah()
-    {       
-        $result = $this->db->get('matakuliah');
-        return $result->result();
+    function list_matakuliah($id='')
+    {    
+        $response = array();   
+        if ($id == 'FILTERED')
+        {
+          $postData = $this->input->post();          
+          $this->db->where('prodi', $postData['id_prodi']);
+          $q = $this->db->get('matakuliah');
+          $response = $q->result_array();
+          return $response;
+        } else {
+            $result = $this->db->get('matakuliah');
+            return $result->result();
+        }
     }
 
     function save_matakuliah()
