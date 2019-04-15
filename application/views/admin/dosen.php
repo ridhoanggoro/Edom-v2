@@ -1,6 +1,3 @@
-<p class="mb-4">List Dosen</p>
-
-<!-- DataTales Example -->
 <div class="card shadow">
 	<div class="card-header">	  
 	  <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><i class="fas fa-user-plus"></i> Tambah Dosen</a></div>
@@ -10,8 +7,8 @@
 		<table class="table table-striped table-bordered" id="mydata" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-    			<th>ID</th>
-                <th>NIDN</th>
+    			<th>No</th>
+          <th>NIDN</th>
     			<th>Nama</th>
     			<th>Nama Lengkap</th>
     			<th>Role</th>
@@ -92,11 +89,11 @@
                    
                   <div class="form-group col-md-4">
                     <label for="nidn">No. Induk</label>
-                    <input type="text" class="form-control" id="no_induk_edit" name="no_induk_edit">
+                    <input type="text" class="form-control" id="no_induk_edit" name="no_induk_edit" readonly>
                   </div> 
                   <div class="form-group col-md-8">
                     <label for="role">Role</label>
-                    <select class="custom-select mr-sm-2" id="role_edit" name="role_edit">
+                    <select class="custom-select mr-sm-2" id="role_edit" name="role_edit" >
                         <option selected>Pilih Role...</option>
                         <option value="KARYAWAN">KARYAWAN</option>            
                         <option value="DOSEN">DOSEN</option>
@@ -167,16 +164,16 @@
                 success : function(data){
                     var html = '';
                     var i;
-                    for(i=0; i<data.length; i++){
+                    for(i=1; i<data.length; i++){
                         html += '<tr>'+
-                                '<td>'+data[i].seq_id+'</td>'+
+                                '<td>'+i+'</td>'+
                                 '<td>'+data[i].kd_dosen+'</td>'+
                                 '<td>'+data[i].nama+'</td>'+
                                 '<td>'+data[i].nama_lengkap+'</td>'+
                                 '<td>'+data[i].role+'</td>'+
                                 '<td style="text-align:right;">'+
-                                    '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-seq_id="'+data[i].seq_id+'" data-kd_dosen="'+data[i].kd_dosen+'" data-nama="'+data[i].nama+'"data-nama_lengkap="'+data[i].nama_lengkap+'"data-role="'+data[i].role+'">Edit</a>'+' '+
-                                    '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-seq_id="'+data[i].seq_id+'">Delete</a>'+
+                                    '<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info btn-circle btn-sm item_edit" data-seq_id="'+data[i].seq_id+'" data-kd_dosen="'+data[i].kd_dosen+'" data-nama="'+data[i].nama+'"data-nama_lengkap="'+data[i].nama_lengkap+'"data-role="'+data[i].role+'"><i class="fas fa-search"></i></a>'+' '+
+                                    '<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-circle btn-sm item_delete" data-seq_id="'+data[i].seq_id+'"><i class="fas fa-trash"></i></a>'+
                                 '</td>'+
                                 '</tr>';
                     }
