@@ -18,6 +18,28 @@
             });
         });
 
+        $('select[name="prodi"]').on('change', function() {            
+            var id_prodi = $(this).val();
+
+            // AJAX request
+            $.ajax({
+                url:'<?php echo base_url(); ?>admin/master/get_matkul_prodi',
+                method: 'post',
+                data: {id_prodi: id_prodi},
+                dataType: 'json',
+                success: function(response){
+
+                // Remove options 
+                $('#matkul').find('option').not(':first').remove();               
+
+                // Add options
+                $.each(response,function(index,data){
+                    $('#matkul').append('<option value="'+data['kd_matkul']+'">'+data['nama_matkul']+'</option>');
+                });
+                }
+            });
+        });
+
         $('#btn_save').click(function() {
             var semester = $('#semester').val();
             var prodi = $('#prodi').val();
@@ -106,11 +128,11 @@
                         <label for="matkul">Mata Kuliah</label>
                         <select id="matkul" name="matkul" class="form-control form-control-chosen" data-placeholder="Please select...">
                             <option value="-">-- Pilih --</option>
-                            <?php foreach ($daftar_matkul->result() as $value) { ?>
+                            <!-- <?php foreach ($daftar_matkul->result() as $value) { ?>
                                 <option value="<?php echo $value->kd_matkul; ?>">
                                     <?php echo $value->nama_matkul; ?>
                                 </option>
-                                <?php } ?>
+                                <?php } ?> -->
                         </select>
                     </div>
                     <div class="form-group col-md-3">
