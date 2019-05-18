@@ -120,8 +120,9 @@ class Master extends CI_Controller {
   {
     $isi['title']         = 'Report EDOM';
     $isi['content']       = 'admin/report_edom';
-    $isi['thn_akademik'] 	= $this->model_penting->ThnAkademikKuisioner();
-		$isi['list_prodi']		= $this->model_penting->ProdiKuisioner();
+    $isi['thn_akademik'] = $this->model_penting->ThnAkademikKuisioner();
+    	$isi['list_prodi']= $this->model_penting->ProdiKuisioner();
+    	
     $this->load->view('overview', $isi);
   }
 
@@ -129,6 +130,8 @@ class Master extends CI_Controller {
 	{
     $periode = $this->input->post('thn_akademik');
     $prodi  = $this->input->post('prodi');
+    $semester= $this->input->post('thn_akademik');
+    $data['semester'] = $semester;
 
     $this->load->library('pdf');
     $pdf                   = $this->pdf->load();

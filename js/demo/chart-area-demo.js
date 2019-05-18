@@ -49,7 +49,7 @@ function setDynamicChart(chartype, chartTitle, chartCategories, poin)
           yAxes: [{
             ticks: {
               min: 0,
-              max: 5,
+              max: 4,
               maxTicksLimit: 5,
               padding: 10
             },

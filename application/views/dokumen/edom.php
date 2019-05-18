@@ -25,7 +25,7 @@ table thead td { background-color: #EEEEEE;
 <body>
 <table class="items" width="100%" style="border-collapse: collapse;" cellpadding="1">
     <tr bgcolor="#FFFFFF">
-        <td colspan="8" align="right" style="border:none;vertical-align:middle;font-size: 8pt">FM 1-7.5.1-4.AAK-64.v3</td>
+        <td colspan="8" align="right" style="border:none;vertical-align:middle;font-size: 8pt"></td>
     </tr>
     <tr bgcolor="#FFFFFF">
         <td colspan="2" rowspan="3" align="center" style="vertical-align:middle"><img src="<?php echo base_url(); ?>assets/images/logo_up_small.PNG" width="100" alt="" />
@@ -41,8 +41,11 @@ table thead td { background-color: #EEEEEE;
       <td height="22" colspan="5" align="center" style="vertical-align:middle;font-size: 12pt"><strong>SATUAN JAMINAN MUTU</strong></td>
     </tr>
     <tr bgcolor="#FFFFFF">
-        <td height="49" colspan="5" align="center" style="vertical-align:middle;font-size: 14pt"><strong>HASIL PENGUKURAN EVALUASI KINERJA DOSEN (EKD) PRODI <?php echo strtoupper($nama_prodi); ?></strong></td>
+        <td height="49" colspan="5" align="center" style="vertical-align:middle;font-size: 14pt"><strong>HASIL PENGUKURAN EVALUASI KINERJA DOSEN (EKD) PRODI <?php echo strtoupper($nama_prodi); ?></strong><p><align="center" style="vertical-align:middle;font-size: 12pt"><strong>SEMESTER <?php echo strtoupper($semester); ?></strong></p></td>
     </tr>
+   
+    
+    
 </table>
 <hr>
 <table class="items" width="100%" style="border-collapse: collapse;" cellpadding="1">
@@ -51,7 +54,7 @@ table thead td { background-color: #EEEEEE;
       <td rowspan="2" align="center" style="vertical-align:middle">No</td>
       <td rowspan="2" align="center" style="vertical-align:middle">Nama Dosen</td>
       <td rowspan="2" align="center" style="vertical-align:middle">Mata Kuliah yang diampu</td>
-      <td colspan="10" align="center" style="vertical-align:middle">Kinerja Dosen Berdasarkan Kompetensi Paegogik</td>
+      <td colspan="10" align="center" style="vertical-align:middle">Kinerja Dosen Berdasarkan Kompetensi EDOM</td>
       <td rowspan="2" align="center" style="vertical-align:middle">Nilai Akhir EKD Total</td>
     </tr>
     <tr>
@@ -88,26 +91,26 @@ table thead td { background-color: #EEEEEE;
 </table>
 <p>&nbsp;</p>
 
-<table class="items" width="10%" style="border-collapse: collapse; vertical-align:middle;font-size: 8pt" cellpadding="1">
+<table class="items" width="15%" style="border-collapse: collapse; vertical-align:middle;font-size: 8pt" cellpadding="1">
   <tbody>
     <tr>
       <td>Range</td>
       <td>Keterangan</td>
     </tr>
     <tr>
-      <td>0 -1</td>
-      <td>Cukup</td>
+      <td><= 1.50</td>
+      <td>Kurang Baik</td>
     </tr>
     <tr>
-      <td>1 - 2</td>
-      <td>Sedang</td>
+      <td>1.51 - 2.00</td>
+      <td>Cukup Baik</td>
     </tr>
     <tr>
-      <td>2 - 3</td>
+      <td>2.01 - 3.49</td>
       <td>Baik</td>
     </tr>
     <tr>
-      <td>3 - 4</td>
+      <td>3.50 - 4.00</td>
       <td>Sangat Baik</td>
     </tr>
   </tbody>
