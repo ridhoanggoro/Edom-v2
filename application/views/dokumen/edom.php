@@ -41,7 +41,7 @@ table thead td { background-color: #EEEEEE;
       <td height="22" colspan="5" align="center" style="vertical-align:middle;font-size: 12pt"><strong>SATUAN JAMINAN MUTU</strong></td>
     </tr>
     <tr bgcolor="#FFFFFF">
-        <td height="49" colspan="5" align="center" style="vertical-align:middle;font-size: 14pt"><strong>HASIL PENGUKURAN EVALUASI KINERJA DOSEN (EKD) PRODI <?php echo strtoupper($nama_prodi); ?></strong><p><align="center" style="vertical-align:middle;font-size: 12pt"><strong>SEMESTER <?php echo strtoupper($semester); ?></strong></p></td>
+        <td height="49" colspan="5" align="center" style="vertical-align:middle;font-size: 14pt"><strong>HASIL PENGUKURAN EVALUASI KINERJA DOSEN (EKD) PRODI <?php echo strtoupper($nama_prodi); ?><p><span style="font-size: 11pt;"><strong><u><strong>SEMESTER <?php echo strtoupper($semester); ?></strong></u><strong></span></p></td>
     </tr>
    
     

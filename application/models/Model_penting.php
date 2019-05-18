@@ -251,6 +251,12 @@ class Model_penting extends CI_model {
         return $this->db->query($sql);
     }
 
+    function data_report_edom_saran($semester, $prodi)
+    {
+        $sql = "SELECT dos.kd_dosen, dos.nama_lengkap, eva.Saran FROM evaluasi eva INNER JOIN dosen dos ON eva.dosen=dos.kd_dosen INNER JOIN prodi pro ON pro.kd_prodi=eva.prodi INNER JOIN matakuliah mk ON mk.kd_matkul=eva.matkul WHERE eva.semester='$semester' AND pro.kd_prodi='$prodi'";
+        return $this->db->query($sql);
+    }
+
     function ambil_nama_prodi($prodi)
     {
         $this->db->where('kd_prodi', $prodi);
