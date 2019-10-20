@@ -134,19 +134,19 @@ class Master extends CI_Controller {
     $jenis= $this->input->post('jenis');
     $data['semester'] = $semester;
 
-    $this->load->library('pdf');
-    $pdf                   = $this->pdf->load();
-    $pdf                   = new mPDF('win-1252', 'A4-L', '', '', 10, 10, 15, 1, 30, 30);
-    $pdf->useOnlyCoreFonts = false; // false is default
-    $pdf->SetProtection(array(
-        'print'
-    ));
-    $pdf->SetTitle("EDOM");
-    $pdf->SetAuthor("Universitas Pancasila");
+    // $this->load->library('pdf');
+    // $pdf                   = $this->pdf->load();
+    // $pdf                   = new mPDF('win-1252', 'A4-L', '', '', 10, 10, 15, 1, 30, 30);
+    // $pdf->useOnlyCoreFonts = false; // false is default
+    // $pdf->SetProtection(array(
+    //     'print'
+    // ));
+    // $pdf->SetTitle("EDOM");
+    // $pdf->SetAuthor("Universitas Pancasila");
     
-    $pdf->SetDisplayMode('fullpage');
+    // $pdf->SetDisplayMode('fullpage');
     
-    ini_set('memory_limit', '256M');
+    // ini_set('memory_limit', '256M');
 
     $daftar_prodi = $this->model_penting->ambil_nama_prodi($prodi);
     if ($daftar_prodi->num_rows() > 0) {
@@ -165,12 +165,12 @@ class Master extends CI_Controller {
       $nama_file = 'REPORT_EDOM_SARAN';
     }
 
-    
-		$html = $this->load->view($template, $data, true);
-    $pdf->WriteHTML($html);
-    $output = $nama_file.'_'.date("Y-m-d H:i:s").'.pdf';
-    $pdf->Output("$output", 'D'); 
-    exit();
+    $this->load->view($template, $data);
+		// $html = $this->load->view($template, $data, true);
+    // $pdf->WriteHTML($html);
+    // $output = $nama_file.'_'.date("Y-m-d H:i:s").'.pdf';
+    // $pdf->Output("$output", 'D'); 
+    // exit();
   }
     
 

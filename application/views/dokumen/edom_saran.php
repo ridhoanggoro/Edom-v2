@@ -22,7 +22,7 @@ table thead td { background-color: #EEEEEE;
 </style>
 </head>
 
-<body>
+<body onload="print()">
 <table class="items" width="100%" style="border-collapse: collapse;" cellpadding="1">
     <tr bgcolor="#FFFFFF">
         <td colspan="8" align="right" style="border:none;vertical-align:middle;font-size: 8pt"></td>

@@ -253,7 +253,42 @@ class Model_penting extends CI_model {
 
     function data_report_edom_saran($semester, $prodi)
     {
-        $sql = "SELECT dos.kd_dosen, dos.nama_lengkap, eva.Saran FROM evaluasi eva INNER JOIN dosen dos ON eva.dosen=dos.kd_dosen INNER JOIN prodi pro ON pro.kd_prodi=eva.prodi INNER JOIN matakuliah mk ON mk.kd_matkul=eva.matkul WHERE eva.semester='$semester' AND pro.kd_prodi='$prodi'";
+        $sql = "SELECT
+   CASE
+    WHEN (group_row_number = 1)
+    THEN dosen
+    ELSE ''
+  END AS dosen,
+  CASE
+    WHEN (group_row_number = 1)
+    THEN dos.nama_lengkap
+    ELSE ''
+  END AS nama_lengkap,
+  Saran,
+  overall_row_num,
+  group_row_number
+FROM
+  (SELECT
+    dosen,
+    Saran,
+    @num := IF(@dosen = `dosen`, @num + 1, 1) AS group_row_number,
+    @dosen := `dosen` AS dummy, overall_row_num
+  FROM
+    (SELECT
+      dosen,
+      Saran,
+      @rn := @rn + 1 overall_row_num
+    FROM
+      evaluasi,
+      (SELECT
+        @rn := 0) r
+    WHERE Saran <> '' AND semester = '$semester'
+      AND prodi = '$prodi' ) X
+  ORDER BY dosen,
+    overall_row_num) X
+  INNER JOIN dosen dos
+    ON X.dosen = dos.kd_dosen
+ORDER BY overall_row_num";
         return $this->db->query($sql);
     }
 
