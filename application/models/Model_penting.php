@@ -247,17 +247,14 @@ class Model_penting extends CI_model {
     
     function data_report_edom($semester, $prodi)
     {
-        $sql = "SELECT AVG(eva.jawaban1) as jawaban1, AVG(eva.jawaban2) as jawaban2, AVG(eva.jawaban3) as jawaban3, AVG(eva.jawaban4) as jawaban4, AVG(eva.jawaban5) as jawaban5, AVG(eva.jawaban6) as jawaban6, AVG(eva.jawaban7) as jawaban7, AVG(eva.jawaban8) as jawaban8, AVG(eva.jawaban9) as jawaban9, AVG(eva.jawaban10) as jawaban10, dos.nama,mk.nama_matkul,(jawaban1+jawaban2+jawaban3+jawaban4+jawaban5+jawaban6+jawaban7+jawaban8+jawaban9+jawaban10)/10 AS total FROM `evaluasi` eva INNER JOIN dosen dos ON eva.dosen=dos.kd_dosen INNER JOIN prodi pro ON pro.kd_prodi=eva.prodi INNER JOIN matakuliah mk ON mk.kd_matkul=eva.matkul WHERE eva.semester='$semester' AND pro.kd_prodi='$prodi' GROUP BY dos.nama, mk.kd_matkul";
+        $sql = "SELECT AVG(eva.jawaban1) as jawaban1, AVG(eva.jawaban2) as jawaban2, AVG(eva.jawaban3) as jawaban3, AVG(eva.jawaban4) as jawaban4, AVG(eva.jawaban5) as jawaban5, AVG(eva.jawaban6) as jawaban6, AVG(eva.jawaban7) as jawaban7, AVG(eva.jawaban8) as jawaban8, AVG(eva.jawaban9) as jawaban9, AVG(eva.jawaban10) as jawaban10, dos.nama,mk.nama_matkul,(AVG(eva.jawaban1)+AVG(eva.jawaban2)+AVG(eva.jawaban3)+AVG(eva.jawaban4)+AVG(eva.jawaban5)+AVG(eva.jawaban6)+AVG(eva.jawaban7)+AVG(eva.jawaban8)+AVG(eva.jawaban9)+AVG(eva.jawaban10))/10 AS total FROM `evaluasi` eva INNER JOIN dosen dos ON eva.dosen=dos.kd_dosen INNER JOIN prodi pro ON pro.kd_prodi=eva.prodi INNER JOIN matakuliah mk ON mk.kd_matkul=eva.matkul AND mk.prodi='$prodi' WHERE eva.semester='$semester' AND pro.kd_prodi='$prodi' GROUP BY dos.nama, mk.kd_matkul";
+        
         return $this->db->query($sql);
     }
 
     function data_report_edom_saran($semester, $prodi)
     {
-        $sql = "SELECT
-   CASE
-    WHEN (group_row_number = 1)
-    THEN dosen
-    ELSE ''
+        $sql = "SELECT CASE WHEN (group_row_number = 1) THEN dosen ELSE ''
   END AS dosen,
   CASE
     WHEN (group_row_number = 1)
@@ -289,6 +286,7 @@ FROM
   INNER JOIN dosen dos
     ON X.dosen = dos.kd_dosen
 ORDER BY overall_row_num";
+        
         return $this->db->query($sql);
     }
 

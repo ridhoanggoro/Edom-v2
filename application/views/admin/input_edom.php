@@ -110,10 +110,10 @@
                         <label for="bank">Tahun Ajaran</label>
                         <select id="semester" name="semester" class="form-control form-control-chosen" data-placeholder="Please select...">
                             <option></option>
-                            <option>GASAL 2018/2019</option>
-                            <option>GENAP 2018/2019</option>
-                            <option>GASAL 2019/2020</option>
-                            <option>GENAP 2019/2020</option>
+                            <option>GASAL.2018-2019</option>
+                            <option>GENAP.2018-2019</option>
+                            <option>GASAL.2019-2020</option>
+                            <option>GENAP.2019-2020</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">

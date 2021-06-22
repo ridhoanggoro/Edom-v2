@@ -108,7 +108,7 @@ class Master extends CI_Controller {
 		}		
 	}
 	
-	public function slip_gaji()
+   public function slip_gaji()
 	{
 		$isi['title'] 			= 'Cetak Slip Gaji';
 		$isi['content']			= 'cetak_slip';
@@ -116,6 +116,15 @@ class Master extends CI_Controller {
 		$this->load->view('overview', $isi);
   }
   
+  public function laporan()
+  {
+    $isi['title']         = 'GRAFIK EDOM';
+    $isi['content']       = 'admin/laporan';
+    $isi['thn_akademik'] = $this->model_penting->ThnAkademikKuisioner();
+    	$isi['list_prodi']= $this->model_penting->ProdiKuisioner();
+    	
+    $this->load->view('overview', $isi);
+  }
   public function report_edom()
   {
     $isi['title']         = 'Report EDOM';
@@ -127,26 +136,26 @@ class Master extends CI_Controller {
   }
 
   public function cetak_report_edom()
-	{
+{
     $periode = $this->input->post('thn_akademik');
     $prodi  = $this->input->post('prodi');
     $semester= $this->input->post('thn_akademik');
     $jenis= $this->input->post('jenis');
     $data['semester'] = $semester;
 
-    // $this->load->library('pdf');
-    // $pdf                   = $this->pdf->load();
-    // $pdf                   = new mPDF('win-1252', 'A4-L', '', '', 10, 10, 15, 1, 30, 30);
-    // $pdf->useOnlyCoreFonts = false; // false is default
+    $this->load->library('pdf');
+    $pdf                   = $this->pdf->load();
+    $pdf                   = new mPDF('win-1252', 'A4-L', '', '', 10, 10, 15, 1, 30, 30);
+    $pdf->useOnlyCoreFonts = false; // false is default
     // $pdf->SetProtection(array(
     //     'print'
     // ));
-    // $pdf->SetTitle("EDOM");
-    // $pdf->SetAuthor("Universitas Pancasila");
+    $pdf->SetTitle("EDOM");
+    $pdf->SetAuthor("Universitas Pancasila");
     
-    // $pdf->SetDisplayMode('fullpage');
+    $pdf->SetDisplayMode('fullpage');
     
-    // ini_set('memory_limit', '256M');
+    ini_set('memory_limit', '256M');
 
     $daftar_prodi = $this->model_penting->ambil_nama_prodi($prodi);
     if ($daftar_prodi->num_rows() > 0) {
@@ -166,84 +175,12 @@ class Master extends CI_Controller {
     }
 
     $this->load->view($template, $data);
-		// $html = $this->load->view($template, $data, true);
-    // $pdf->WriteHTML($html);
-    // $output = $nama_file.'_'.date("Y-m-d H:i:s").'.pdf';
-    // $pdf->Output("$output", 'D'); 
-    // exit();
-  }
-    
-
-	public function cetak_slip()
-	{
-	// load library
-    $this->load->library('pdf');
-    $pdf                   = $this->pdf->load();
-    //$pdf=new mPDF('win-1252','A4','','',left,right,top,1,30,30);
-    $pdf                   = new mPDF('win-1252', 'A4', '', '', 10, 10, 15, 1, 30, 30);
-    $pdf->useOnlyCoreFonts = false; // false is default
-    $pdf->SetProtection(array(
-        'print'
-    ));
-    $pdf->SetTitle("Transkrip Nilai");
-    $pdf->SetAuthor("Universitas Pancasila");
-    $pdf->SetSubject("Slip Pembayaran Gaji");
-    
-    $pdf->SetDisplayMode('fullpage');
-    
-    ini_set('memory_limit', '256M');
-
-    $no_induk = $this->input->post('no_induk');
-    $periode  = $this->input->post('periode');
-  	$query = $this->model_penting->ambil_data_gaji($no_induk, $periode);
-  	if ($query->num_rows() > 0) {
-      		foreach ($query->result() as $row) {
-      			$data['no_induk'] = $row->no_induk;
-      			$data['nama_lengkap'] = $row->nama_lengkap;
-      			$data['periode'] = $row->periode;
-      			$data['no_rekening'] = $row->no_rekening;
-      			$data['nama_bank'] = $row->nama_bank;
-      			$data['p_gapok'] = $row->p_gapok;
-      			$data['p_struktural'] = $row->p_struktural;
-      			$data['p_fungsional'] = $row->p_fungsional;
-      			$data['p_uang_makan'] = $row->p_uang_makan;
-      			$data['p_transport'] = $row->p_transport;
-      			$data['p_kelangkaan'] = $row->p_kelangkaan;
-      			$data['p_peralihan'] = $row->p_peralihan;
-      			$data['p_lain_lain'] = $row->p_lain_lain;
-      			$data['t_gapok'] = $row->t_gapok;
-      			$data['t_struktural'] = $row->t_struktural;
-      			$data['t_fungsional'] = $row->t_fungsional;
-      			$data['t_uang_makan'] = $row->t_uang_makan;
-      			$data['t_transport'] = $row->t_transport;
-      			$data['t_kelangkaan'] = $row->t_kelangkaan;
-      			$data['t_lain_lain'] = $row->t_lain_lain;
-      			$data['pot_bank'] = $row->pot_bank;
-      			$data['pot_koperasi'] = $row->pot_koperasi;
-      			$data['pot_astek'] = $row->pot_astek;
-      			$data['pot_pajak'] = $row->pot_pajak;
-      			$data['pot_transport'] = $row->pot_transport;
-      			$data['pot_lain_lain'] = $row->pot_lain_lain;
-      		}
-      	}
-      $html = $this->load->view('gaji/template_slip_gaji', $data, true);
-      // render the view into HTML
-      $pdf->WriteHTML($html); // write the HTML into the PDF
-      $output = 'SLIP_GAJI.pdf';
-      $pdf->Output("$output", 'D'); 
-      exit();
-  	}
-
-	  public function laporan()
-	  {
-		$isi['title']       	= 'Laporan';
-		$isi['content']     	= 'admin/laporan';   
-		$isi['thn_akademik'] 	= $this->model_penting->ThnAkademikKuisioner();
-		$isi['list_prodi']		= $this->model_penting->ProdiKuisioner();
-		//$isi['list_matkul'] 	= $this->model_dosen->getListMatkulDosenKuisioner();
-		
-		$this->load->view('overview',$isi);
-	  }
+	$html = $this->load->view($template, $data, true);
+    $pdf->WriteHTML($html);
+    $output = $nama_file.'_'.date("Y-m-d H:i:s").'.pdf';
+    $pdf->Output("$output", 'D'); 
+    exit();
+ }
   
    function get_list_dosen_by_smt($id='')
     {            	
@@ -289,7 +226,7 @@ class Master extends CI_Controller {
     $objPHPExcel = new PHPExcel();
     // Set properties
     $objPHPExcel->getProperties()
-            ->setCreator("Anggoro, Ridho") //creator
+            ->setCreator("Pulahta, FTUP") //creator
             ->setTitle("Mahasiswa");      //file title
     $objset = $objPHPExcel->setActiveSheetIndex(0); //inisiasi set object
     $objget = $objPHPExcel->getActiveSheet();       //inisiasi get object     
