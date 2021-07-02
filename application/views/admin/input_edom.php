@@ -154,225 +154,31 @@
                     Keterangan: 1= Berarti Sangat Tidak Setuju; 2= Berarti Tidak Setuju;3= Berarti Setuju; 4= Berarti Sangat Setuju
                 </div>
                 <br/>
-                <div class="form-group">
-                    <label for="no_1">1. Dosen menjelaskan rancangan pembelajaran (RPS) dan informasi referensi yang digunakan serta memberikan materi sesuai rancangan pembelajaran (RPS)</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="no_1" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="customRadioInline1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline2" name="no_1" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="customRadioInline2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline3" name="no_1" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="customRadioInline3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline4" name="no_1" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="customRadioInline4">4</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="no_2">2. Dosen menyampaikan materi kuliah secara sistematis</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_2_1" name="no_2" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_2_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_2_2" name="no_2" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_2_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_2_3" name="no_2" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_2_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_2_4" name="no_2" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_2_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_3">3. Dosen mempunyai/memberikan bahan ajar kepada mahasiswa (diktat ajar, handout, modul ajar, buku ajar)</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_3_1" name="no_3" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_3_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_3_2" name="no_3" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_3_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_3_3" name="no_3" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_3_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_3_4" name="no_3" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_3_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_4">4. Dosen memberikan contoh yang relevan dengan konsep yang diajarkan</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_4_1" name="no_4" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_4_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_4_2" name="no_4" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_4_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_4_3" name="no_4" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_4_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_4_4" name="no_4" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_4_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_5">5. Dosen mengajar tepat waktu </label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_5_1" name="no_5" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_5_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_5_2" name="no_5" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_5_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_5_3" name="no_5" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_5_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_5_4" name="no_5" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_5_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_6">6. Dosen mengajar sesuai jadwal ( hari dan waktu mengajar)</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_6_1" name="no_6" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_6_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_6_2" name="no_6" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_6_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_6_3" name="no_6" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_6_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_6_4" name="no_6" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_6_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_7">7. Dosen membangun suasana aktif dengan tanya jawab</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_7_1" name="no_7" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_7_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_7_2" name="no_7" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_7_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_7_3" name="no_7" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_7_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_7_4" name="no_7" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_7_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_8">8. Dosen mengajar dengan memanfaatkan media infocus/LCD</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_8_1" name="no_8" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_8_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_8_2" name="no_8" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_8_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_8_3" name="no_8" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_8_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_8_4" name="no_8" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_8_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_9">9. Dosen menjelaskan kriteria penilaian hasil belajar mahasiswa diawal perkuliahan</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_9_1" name="no_9" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_9_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_9_2" name="no_9" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_9_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_9_3" name="no_9" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_9_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_9_4" name="no_9" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_9_4">4</label>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="no_10">10. Dosen memberikan soal test/kuis/Tugas/UTS/UAS, yang sesuai dengan materi yang diajarkan</label>
-                    <br/>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_10_1" name="no_10" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="no_10_1">1</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_10_2" name="no_10" class="custom-control-input" value="2">
-                        <label class="custom-control-label" for="no_10_2">2</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_10_3" name="no_10" class="custom-control-input" value="3">
-                        <label class="custom-control-label" for="no_10_3">3</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="no_10_4" name="no_10" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="no_10_4">4</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="saran">Saran</label>
-                        <textarea class="form-control" id="saran" name="saran" rows="3"></textarea>
-                    </div>
-                </div>
+                <?php for ($i=1; $i <= 15; $i++) { 
+                    echo "<div class='card mb-2 border-left-primary'>
+    <div class='card-body'><div class='form-group'>
+                            <label for='no_".$i."'>Soal Nomor ".$i."</label><br/>";
+                    for ($j=1; $j <= 4 ; $j++) { 
+                        echo "<div class='custom-control custom-radio custom-control-inline'>
+                                <input type='radio' id='no_".$i."_".$j."' name='no_".$i."' class='custom-control-input' value='".$j."'>
+                                <label class='custom-control-label' for='no_".$i."_".$j."'>".$j."</label>
+                            </div>";
+                    }
+                    echo "</div></div></div>";
+                } ?>
+                
+                
             </div>
         </div>
     </div>
 </div>
 <div class="form-group row">
     <div class="col-sm-10">
-        <button type="submit" id="btn_save" class="btn btn-primary">Simpan</button>
+        <button type="submit" id="btn_save" class="btn btn-primary btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-check"></i>
+            </span>
+            <span class="text">Simpan</span>
+        </button>
     </div>
 </div>

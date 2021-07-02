@@ -5,7 +5,7 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png" />
 
-<title><?php echo SITE_NAME .": ". ucfirst($this->uri->segment(2)) ." - ". ucfirst($this->uri->segment(3)) ?></title>
+<title><?php echo SITE_NAME .": ". ucfirst($this->uri->segment(2)) ." - ". ucfirst($title) ?></title>
 
 <!-- Custom fonts for this template-->
 <link href="<?php echo base_url('assets/fontawesome-free/css/all.min.css')?>" rel="stylesheet" type="text/css">
