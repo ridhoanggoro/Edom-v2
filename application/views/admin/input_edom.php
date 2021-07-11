@@ -154,20 +154,23 @@
                     Keterangan: 1= Berarti Sangat Tidak Setuju; 2= Berarti Tidak Setuju;3= Berarti Setuju; 4= Berarti Sangat Setuju
                 </div>
                 <br/>
-                <?php for ($i=1; $i <= 15; $i++) { 
-                    echo "<div class='card mb-2 border-left-primary'>
-    <div class='card-body'><div class='form-group'>
-                            <label for='no_".$i."'>Soal Nomor ".$i."</label><br/>";
-                    for ($j=1; $j <= 4 ; $j++) { 
+                <?php $i=1; foreach ($list_pertanyaan->result() as $v) { 
+                    echo "<div class='card mb-2 border-left-primary shadow h-100 py-2'>
+                            <div class='card-body'><div class='form-group'>
+                                <label for='no_".$i."'><span class='badge badge-primary'>$i</span> ".$v->pertanyaan."</label><br/>";
+                                for ($j=1; $j <= 4 ; $j++) { 
                         echo "<div class='custom-control custom-radio custom-control-inline'>
                                 <input type='radio' id='no_".$i."_".$j."' name='no_".$i."' class='custom-control-input' value='".$j."'>
                                 <label class='custom-control-label' for='no_".$i."_".$j."'>".$j."</label>
                             </div>";
                     }
-                    echo "</div></div></div>";
+                    echo "</div>
+                    </div></div>"; $i++;
                 } ?>
-                
-                
+                <div class="form-group">
+                    <label for="saran">Saran</label>
+                    <textarea class="form-control" id="saran" name="saran" rows="3"></textarea>
+                </div>
             </div>
         </div>
     </div>

@@ -209,6 +209,7 @@
                 }
  
             });
+
         }
  
         //Save Data
@@ -230,12 +231,13 @@
                     $('[name="prodi"]').val("");                   
                     $('#Modal_Add').modal('hide');
                  
-                   $.alert({            
-            title: 'Sukses!',
-            content: 'Data Dosen Berhasil Disimpan!',
-          }); 
+                    $.alert({            
+                      title: 'Sukses!',
+                      content: 'Data Dosen Berhasil Disimpan!',
+                    }); 
           
                     show_data();
+                    $('#mydata').dataTable().ajax.reload();
                 }
 
             });

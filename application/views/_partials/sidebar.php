@@ -39,6 +39,8 @@
         <h6 class="collapse-header">Admin Menu:</h6>
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'dosen' ? 'active': '' ?>" href="<?php echo site_url('admin/master/dosen'); ?>">Master Dosen</a>  
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'matakuliah' ? 'active': '' ?>" href="<?php echo site_url('admin/master/matakuliah'); ?>">Master Matakuliah</a>      		
+        <a class="collapse-item <?php echo $this->uri->segment(3) == 'pertanyaan' ? 'active': '' ?>" href="<?php echo site_url('admin/master/pertanyaan'); ?>">Master Pertanyaan</a> 
+        <a class="collapse-item <?php echo $this->uri->segment(3) == 'edom_form' ? 'active': '' ?>" href="<?php echo site_url('admin/master/edom_form'); ?>">Edom Form</a>  
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'pengisian_edom' ? 'active': '' ?>" href="<?php echo site_url('admin/master/pengisian_edom'); ?>">Input Edom</a>
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'laporan' ? 'active': '' ?>" href="<?php echo site_url('admin/master/laporan'); ?>">Grafik Edom</a>
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'report_edom' ? 'active': '' ?>" href="<?php echo site_url('admin/master/report_edom'); ?>">Report Edom</a>

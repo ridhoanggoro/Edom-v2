@@ -1,7 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set("Asia/Jakarta");
 
 class Model_penting extends CI_model {
+
+    function __construct() {
+	    parent::__construct();
+	    $this->db->query("SET time_zone='+7:00'");
+	}
 	
 	// Model EDOM
 
@@ -221,6 +227,147 @@ class Model_penting extends CI_model {
             $query = $this->db->get('prodi');
             return $query->result();
         }
+    }
+
+    function getListPertanyaan($id='')
+    {
+        if ($id=='ALL')
+        {
+            $this->db->order_by('seq_id', 'ASC');
+            $query = $this->db->get('pertanyaan');
+            return $query;
+        } else {
+            $sql = "SELECT p.* FROM form f INNER JOIN form_detail fd ON fd.form_id=f.seq_id INNER JOIN pertanyaan p ON p.seq_id=fd.id_pertanyaan WHERE f.status=1 ORDER BY p.no";
+            $query = $this->db->query($sql);
+            return $query;
+        }
+    }
+
+    function list_pertanyaan($start, $length, $draw, $search)
+    {
+        $d_total_row = $this->db->query("SELECT * FROM pertanyaan WHERE pertanyaan LIKE '%".$search['value']."%'")->num_rows();
+
+        $q_datanya = $this->db->query("SELECT * FROM pertanyaan WHERE pertanyaan LIKE '%".$search['value']."%' ORDER BY seq_id LIMIT ".$start.", ".$length."")->result_array();
+
+        $data = array();
+        $no = ($start+1);
+        $id = 0;
+
+        foreach ($q_datanya as $d) {
+            $data_ok = array();
+            $data_ok[] = $no++;
+            $data_ok[] = $d['no'];
+            $data_ok[] = $d['pertanyaan'];   
+            $data_ok[] = date("d F Y H:i:s", strtotime($d['last_update']));   
+
+            $data_ok[] = '<a href="#" onclick="return pertanyaan_view('.$d['seq_id'].');" class="btn btn-icon btn-sm btn-info"><i class="fas fa-search"></i></a>
+            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-icon btn-sm item_delete" data-seq_id="'.$d['seq_id'].'"><i class="fas fa-trash"></i></a>';
+ 
+
+            $data[] = $data_ok;
+            $id++;
+        }
+
+        $json_data = array(
+            "draw" => $draw,
+            "iTotalRecords" => $d_total_row,
+            "iTotalDisplayRecords" => $d_total_row,
+            "data" => $data
+        );
+        return $json_data;
+    }
+
+    function pertanyaan_update($d)
+    {
+        $data = array('no'  => $d->no_edit, 'pertanyaan'  => $d->pertanyaan_edit, 'last_update' => date('Y-m-d h:i:s A'), 'userid' => $this->session->userdata('userid'));
+        $this->db->where('seq_id', $d->id_edit);
+        $query = $this->db->update('pertanyaan', $data);
+
+        $ret_val['status'] = "ok";
+        $ret_val['msg'] = "Update data sukses...";
+        return $ret_val;
+    }
+
+    function pertanyaan_add($d)
+    {
+        $data = array('no' => $d->no, 'pertanyaan' => $d->pertanyaan, 'last_update' => date('Y-m-d h:i:s A'), 'userid' => $this->session->userdata('userid'));
+        $str = $this->db->insert_string('pertanyaan', $data);
+        $this->db->query($str);
+        $ret_val['status'] = "ok";
+        $ret_val['msg'] = "Insert data sukses...";
+        return $ret_val;
+    }
+
+    function pertanyaan_delete()
+    {
+        $seq_id = $this->input->post('seq_id');
+        $this->db->where('seq_id', $seq_id);
+        $result = $this->db->delete('pertanyaan');
+        return $result;
+    }
+
+    function list_edom_form($start, $length, $draw, $search)
+    {
+        $d_total_row = $this->db->query("SELECT * FROM form WHERE nama LIKE '%".$search['value']."%'")->num_rows();
+
+        $q_datanya = $this->db->query("SELECT * FROM form WHERE nama LIKE '%".$search['value']."%' ORDER BY seq_id LIMIT ".$start.", ".$length."")->result_array();
+
+        $data = array();
+        $no = ($start+1);
+        $id = 0;
+
+        foreach ($q_datanya as $d) {
+            $data_ok = array();
+            $data_ok[] = $no++;
+            $data_ok[] = $d['seq_id'];
+            $data_ok[] = $d['nama'];   
+            $data_ok[] = '';   
+            $data_ok[] = date("d F Y H:i:s", strtotime($d['last_update']));   
+            $data_ok[] = $d['userid']; 
+            $data_ok[] = '<a href="#" onclick="return form_view('.$d['seq_id'].');" class="btn btn-icon btn-sm btn-info"><i class="fas fa-search"></i></a>
+            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-icon btn-sm item_delete" data-seq_id="'.$d['seq_id'].'"><i class="fas fa-trash"></i></a>';
+ 
+            if ($d['status'] == "1")
+            {
+                $data_ok[3] .= '<span class="badge badge-primary">Sedang digunakan</span>';
+            } else {
+                $data_ok[3] .= '<span class="badge badge-danger">Tidak Aktif</span>';
+            }
+            $data[] = $data_ok;
+            $id++;
+        }
+
+        $json_data = array(
+            "draw" => $draw,
+            "iTotalRecords" => $d_total_row,
+            "iTotalDisplayRecords" => $d_total_row,
+            "data" => $data
+        );
+        return $json_data;
+    }
+
+    function save_edom_from($data, $detail)
+    {
+        $stat = $data['status'];
+        if ($stat == '1') {
+            $this->db->query('UPDATE form SET status=0');
+        }
+
+        $this->db->insert('form', $data);
+
+        $id = $data['seq_id'];
+        $s = sizeof($detail['list_pertanyaan']);
+        for ($i=0; $i < $s; $i++) { 
+            $data_details[] = array(
+                'form_id' => $id, 
+                'id_pertanyaan' => $detail['list_pertanyaan'][$i],
+                'last_save' => date('Y-m-d h:i:s A'),
+                'userid' => $this->session->userdata('userid')
+            );
+        }
+        $this->db->insert_batch('form_detail', $data_details);
+        $this->session->set_flashdata('msg', '<div class="alert alert-success text-center"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button><i class="ace-icon fa fa-check"></i> EDOM Form sudah berhasil di tambah!!!</div>');
+				redirect('admin/master/edom_form');
     }
    
     function getSks($id)

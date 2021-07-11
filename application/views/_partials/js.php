@@ -10,6 +10,13 @@
 
 <!-- Page level custom scripts -->
 <script src="<?php echo base_url('js/jquery.inputmask.bundle.js') ?>"></script>
+
 <!-- Page level plugins -->
 <script src="<?php echo base_url('assets/chart.js/Chart.min.js') ?>"></script>
 <script src="<?php echo base_url('js/demo/chart-area-demo.js') ?>"></script>
+
+<script type="text/javascript">
+    const base_url = "<?php echo base_url(); ?>";
+</script>
+
+<script src="<?php echo base_url('js/edom.js') ?>"></script>

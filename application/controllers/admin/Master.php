@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set("Asia/Jakarta");
 
 class Master extends CI_Controller {
 
@@ -87,6 +88,90 @@ class Master extends CI_Controller {
     echo json_encode($data);
   }
 
+  public function pertanyaan()
+  {
+    $isi['title']       = 'Daftar Pertanyaan';
+    $isi['content']     = 'admin/pertanyaan';
+    // $isi['daftar_prodi']  = $this->model_penting->getListProdi('ALL'); 
+    $this->load->view('overview', $isi);
+  }
+
+  public function get_list_pertanyaan(){
+    $start = $this->input->post('start');
+    $length = $this->input->post('length');
+    $draw = $this->input->post('draw');
+    $search = $this->input->post('search');
+    
+    $data=$this->model_penting->list_pertanyaan($start, $length, $draw, $search);
+    echo json_encode($data);
+  }
+
+  function pertanyaan_detail(){
+    $uri3 = $this->uri->segment(4);
+    $a = $this->db->query("SELECT * FROM pertanyaan WHERE seq_id = '$uri3'")->row();
+    echo json_encode($a);
+  }
+
+  function pertanyaan_update(){
+    $p = json_decode(file_get_contents('php://input'));
+    $q = $this->model_penting->pertanyaan_update($p);
+    echo json_encode($q);
+  }
+
+  function pertanyaan_add(){
+    $p = json_decode(file_get_contents('php://input'));
+    $q = $this->model_penting->pertanyaan_add($p);
+    echo json_encode($q);
+  }
+
+  function pertanyaan_delete(){
+    $data=$this->model_penting->pertanyaan_delete();
+    echo json_encode($data);
+  }
+
+  function edom_form()
+  {
+    $isi['title']       = 'Daftar Form Pertanyaan Edom';
+    $isi['content']     = 'admin/edom_form';
+    $this->load->view('overview', $isi);
+  }
+
+  public function get_list_edom_form(){
+    $start = $this->input->post('start');
+    $length = $this->input->post('length');
+    $draw = $this->input->post('draw');
+    $search = $this->input->post('search');
+    
+    $data=$this->model_penting->list_edom_form($start, $length, $draw, $search);
+    echo json_encode($data);
+  }
+
+  function add_edom_form()
+  {
+    $isi['title']       = 'Daftar Form Pertanyaan Edom';
+    $isi['content']     = 'admin/add_edom_form';
+    $isi['daftar_pertanyaan']  = $this->model_penting->getListPertanyaan('ALL'); 
+    $this->load->view('overview', $isi);
+  }
+
+  function save_edom_from(){
+    $status = ($this->input->post('status_aktif') == "on") ? 1 : 0 ;
+    $datanya = array(
+      'seq_id' => $this->input->post('id_form'), 
+      'nama' => $this->input->post('nama_form'),
+      'status' => $status,
+      'last_update' => date('Y-m-d h:i:s A'),
+      'userid' => $this->session->userdata('userid')
+    );
+
+    $detailnya = array(
+      'list_pertanyaan' => $this->input->post('listpertanyaan')
+    );
+    $gas = $this->model_penting->save_edom_from($datanya, $detailnya);
+    //echo json_encode($gas);
+    // echo print_r($datanya);
+    
+  }
 
   public function pengisian_edom()
   {
@@ -95,6 +180,7 @@ class Master extends CI_Controller {
     $isi['daftar_matkul'] = $this->model_penting->getListMatkul('ALL');
     $isi['daftar_prodi']  = $this->model_penting->getListProdi('ALL'); 
     $isi['daftar_dosen']  = $this->model_penting->getListDosen('ALL'); 
+    $isi['list_pertanyaan'] = $this->model_penting->getListPertanyaan();
     $this->load->view('overview', $isi);
   }
 

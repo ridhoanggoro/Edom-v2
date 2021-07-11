@@ -21,6 +21,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 
+
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-duallistbox-4/dist/jquery.bootstrap-duallistbox.min.js') ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap-duallistbox-4/dist/bootstrap-duallistbox.min.css') ?>">
