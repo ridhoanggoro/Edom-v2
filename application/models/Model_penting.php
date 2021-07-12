@@ -258,6 +258,7 @@ class Model_penting extends CI_model {
             $data_ok[] = $no++;
             $data_ok[] = $d['no'];
             $data_ok[] = $d['pertanyaan'];   
+            $data_ok[] = $d['kategori'];  
             $data_ok[] = date("d F Y H:i:s", strtotime($d['last_update']));   
 
             $data_ok[] = '<a href="#" onclick="return pertanyaan_view('.$d['seq_id'].');" class="btn btn-icon btn-sm btn-info"><i class="fas fa-search"></i></a>
@@ -279,7 +280,11 @@ class Model_penting extends CI_model {
 
     function pertanyaan_update($d)
     {
-        $data = array('no'  => $d->no_edit, 'pertanyaan'  => $d->pertanyaan_edit, 'last_update' => date('Y-m-d h:i:s A'), 'userid' => $this->session->userdata('userid'));
+        $data = array('no'  => $d->no_edit, 
+        'pertanyaan'  => $d->pertanyaan_edit, 
+        'kategori' => $d->kategori_edit,
+        'last_update' => date('Y-m-d h:i:s A'), 
+        'userid' => $this->session->userdata('userid'));
         $this->db->where('seq_id', $d->id_edit);
         $query = $this->db->update('pertanyaan', $data);
 
@@ -290,7 +295,11 @@ class Model_penting extends CI_model {
 
     function pertanyaan_add($d)
     {
-        $data = array('no' => $d->no, 'pertanyaan' => $d->pertanyaan, 'last_update' => date('Y-m-d h:i:s A'), 'userid' => $this->session->userdata('userid'));
+        $data = array('no' => $d->no, 
+        'pertanyaan' => $d->pertanyaan, 
+        'kategori' => $d->kategori,
+        'last_update' => date('Y-m-d h:i:s A'), 
+        'userid' => $this->session->userdata('userid'));
         $str = $this->db->insert_string('pertanyaan', $data);
         $this->db->query($str);
         $ret_val['status'] = "ok";
@@ -324,8 +333,7 @@ class Model_penting extends CI_model {
             $data_ok[] = '';   
             $data_ok[] = date("d F Y H:i:s", strtotime($d['last_update']));   
             $data_ok[] = $d['userid']; 
-            $data_ok[] = '<a href="#" onclick="return form_view('.$d['seq_id'].');" class="btn btn-icon btn-sm btn-info"><i class="fas fa-search"></i></a>
-            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-icon btn-sm item_delete" data-seq_id="'.$d['seq_id'].'"><i class="fas fa-trash"></i></a>';
+            $data_ok[] = '<a href="'.base_url().'admin/master/view_edom_form/'.$d['seq_id'].'" class="btn btn-icon btn-sm btn-info"><i class="fas fa-search"></i></a>';
  
             if ($d['status'] == "1")
             {
@@ -366,8 +374,44 @@ class Model_penting extends CI_model {
             );
         }
         $this->db->insert_batch('form_detail', $data_details);
-        $this->session->set_flashdata('msg', '<div class="alert alert-success text-center"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button><i class="ace-icon fa fa-check"></i> EDOM Form sudah berhasil di tambah!!!</div>');
-				redirect('admin/master/edom_form');
+        $this->session->set_flashdata('msg', '<div class="alert alert-success text-center"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button><i class="ace-icon fa fa-check"></i> EDOM Form <b>'.$data['nama'].'</b> sudah berhasil di tambah!!!</div>');
+		redirect('admin/master/edom_form');
+    }
+
+    function update_edom_from($key, $data, $detail)
+    {
+        $stat = $data['status'];
+        if ($stat == '1') {
+            $this->db->query('UPDATE form SET status=0');
+        }
+
+        $this->db->where('seq_id', $key);
+        $this->db->update('form', $data);
+
+        $this->db->query("DELETE FROM form_detail WHERE form_id='$key'");
+
+        $s = sizeof($detail['list_pertanyaan']);
+        for ($i=0; $i < $s; $i++) { 
+            $data_details[] = array(
+                'form_id' => $key, 
+                'id_pertanyaan' => $detail['list_pertanyaan'][$i],
+                'last_save' => date('Y-m-d h:i:s A'),
+                'userid' => $this->session->userdata('userid')
+            );
+        }
+        $this->db->insert_batch('form_detail', $data_details);
+        $this->session->set_flashdata('msg', '<div class="alert alert-success text-center"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button><i class="ace-icon fa fa-check"></i> EDOM Form <b>'.$data['nama'].'</b> sudah berhasil di perbaharui!!!</div>');
+		redirect('admin/master/edom_form');
+    }
+
+    function get_form_header($id){
+        $this->db->where('seq_id', $id);
+        return $this->db->get('form');
+    }
+
+    function get_form_details($id){
+        $this->db->where('form_id', $id);
+        return $this->db->get('form_detail');
     }
    
     function getSks($id)

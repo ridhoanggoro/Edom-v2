@@ -49,12 +49,12 @@
                 </select>
                 <br>
                 <div class="row">
-                <div class="col-md-6">
-                    <a href="<?php echo base_url(); ?>admin/master/edom_form" class="btn btn-info w-100">Batal</a>
-                </div>
-                <div class="col-md-6">
-                    <button type="submit" id="btn_save" class="btn btn-success w-100">Simpan Form</button>
-                </div>
+                    <div class="col-md-6">
+                        <a href="<?php echo base_url(); ?>admin/master/edom_form" class="btn btn-info w-100">Batal</a>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" id="btn_save" class="btn btn-success w-100">Simpan Form</button>
+                    </div>
                 </div>
             </form>
 
@@ -75,9 +75,5 @@
         moveOnSelect: false,
         moveAllLabel: 'Move all',
         removeAllLabel: 'Remove all'
-    });
-    $("#demoform").submit(function() {
-        alert($('[name="listpertanyaan[]"]').val());
-        return false;
     });
 </script>

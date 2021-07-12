@@ -154,9 +154,15 @@
                     Keterangan: 1= Berarti Sangat Tidak Setuju; 2= Berarti Tidak Setuju;3= Berarti Setuju; 4= Berarti Sangat Setuju
                 </div>
                 <br/>
+                               
                 <?php $i=1; foreach ($list_pertanyaan->result() as $v) { 
-                    echo "<div class='card mb-2 border-left-primary shadow h-100 py-2'>
-                            <div class='card-body'><div class='form-group'>
+                    echo "<div class='card shadow mb-2'>
+                    <div class='card-header bg-gradient-primary py-3 text-center'>
+                    <h6 class='m-0 font-weight-bold text-white'>".$v->kategori."</h6>
+                    </div>
+                            <div class='card-body'>
+                            
+                            <div class='form-group'>
                                 <label for='no_".$i."'><span class='badge badge-primary'>$i</span> ".$v->pertanyaan."</label><br/>";
                                 for ($j=1; $j <= 4 ; $j++) { 
                         echo "<div class='custom-control custom-radio custom-control-inline'>
@@ -167,6 +173,7 @@
                     echo "</div>
                     </div></div>"; $i++;
                 } ?>
+                
                 <div class="form-group">
                     <label for="saran">Saran</label>
                     <textarea class="form-control" id="saran" name="saran" rows="3"></textarea>

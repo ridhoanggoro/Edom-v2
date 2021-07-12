@@ -7,9 +7,10 @@
 		<table class="table table-striped table-bordered" id="mydata" width="100%" cellspacing="0" id="mydata">
 		<thead>
 			<tr>
-    			<th width="10%">ID Pertanyaan</th>
+    			<th width="5%">No</th>
                 <th width="10%">No Urut</th>
-    			<th width="50%">Pertanyaan</th>
+    			<th width="45%">Pertanyaan</th>
+                <th width="10%">Kategori</th>
     			<th width="20%">Last Edit</th>
     			<th width="10%">Menu</th>
 			</tr>
@@ -62,6 +63,20 @@
                             <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="3" required></textarea>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="kategori">Kategori</label>
+                            <select class="form-control form-control-chosen" name="kategori" id="kategori" required>
+                            <option value="">-- Pilih --</option>
+                            <option value="Tangible">Tangible</option>
+                            <option value="Reliability">Reliability</option>
+                            <option value="Responsive">Responsive</option>
+                            <option value="Assurance">Assurance</option>
+                            <option value="Empathy">Empathy</option>
+                            <option value="-">-</option>
+                            </select>
+                        </div>
+                    </div>
 				</div>
 				<div class="modal-footer bg-whitesmoke">
 					<button class="btn btn-secondary btn-shadow" data-dismiss="modal">Batalkan</button>
@@ -99,6 +114,20 @@
                         <div class="form-group col-md-12">
                             <label for="pertanyaan_edit">Edom Pertanyaan</label>
                             <textarea class="form-control" id="pertanyaan_edit" name="pertanyaan_edit" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="kategori_edit">Kategori</label>
+                            <select class="form-control form-control-chosen" name="kategori_edit" id="kategori_edit" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Tangible">Tangible</option>
+                                <option value="Reliability">Reliability</option>
+                                <option value="Responsive">Responsive</option>
+                                <option value="Assurance">Assurance</option>
+                                <option value="Empathy">Empathy</option>
+                                <option value="-">-</option>
+                            </select>
                         </div>
                     </div>
 				</div>

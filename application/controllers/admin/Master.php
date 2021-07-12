@@ -154,6 +154,17 @@ class Master extends CI_Controller {
     $this->load->view('overview', $isi);
   }
 
+  function view_edom_form()
+  {
+    $id = $this->uri->segment(4);
+    $isi['title']       = 'Daftar Form Pertanyaan Edom';
+    $isi['content']     = 'admin/view_edom_form';
+    $isi['daftar_pertanyaan']  = $this->model_penting->getListPertanyaan('ALL'); 
+    $isi['form_header'] = $this->model_penting->get_form_header($id)->row_array();
+    $isi['form_detail'] = $this->model_penting->get_form_details($id);
+    $this->load->view('overview', $isi);
+  }
+
   function save_edom_from(){
     $status = ($this->input->post('status_aktif') == "on") ? 1 : 0 ;
     $datanya = array(
@@ -168,9 +179,22 @@ class Master extends CI_Controller {
       'list_pertanyaan' => $this->input->post('listpertanyaan')
     );
     $gas = $this->model_penting->save_edom_from($datanya, $detailnya);
-    //echo json_encode($gas);
-    // echo print_r($datanya);
-    
+  }
+
+  function update_edom_from(){
+    $status = ($this->input->post('status_aktif') == "on") ? 1 : 0 ;
+    $key = $this->input->post('id_form');
+    $datanya = array( 
+      'nama' => $this->input->post('nama_form'),
+      'status' => $status,
+      'last_update' => date('Y-m-d h:i:s A'),
+      'userid' => $this->session->userdata('userid')
+    );
+
+    $detailnya = array(
+      'list_pertanyaan' => $this->input->post('listpertanyaan')
+    );
+    $gas = $this->model_penting->update_edom_from($key, $datanya, $detailnya);
   }
 
   public function pengisian_edom()
@@ -211,6 +235,7 @@ class Master extends CI_Controller {
     	
     $this->load->view('overview', $isi);
   }
+
   public function report_edom()
   {
     $isi['title']         = 'Report EDOM';

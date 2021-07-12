@@ -51,6 +51,7 @@ $(document).ready(function(){
         });
         return false;
     });
+
 });
 
 function pertanyaan_view(id){
@@ -63,6 +64,7 @@ function pertanyaan_view(id){
             $("#id_edit").val(data.seq_id);
             $("#no_edit").val(data.no);
             $("#pertanyaan_edit").val(data.pertanyaan);
+            $("#kategori_edit").val(data.kategori).trigger("chosen:updated");;
             $("#pertanyaan_edit").focus();
         }
     });
