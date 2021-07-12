@@ -116,3 +116,40 @@ function pertanyaan_add() {
     });
     return false;
 }
+
+function save_kuesioner(){
+    var f_asal  = $("#f_edom");
+    var form    = get_form_data(f_asal);
+    $.ajax({
+        type: "POST",
+        url: base_url+"admin/master/save_edom",
+        data: JSON.stringify(form),
+        contentType: 'application/json; charset=utf-8',
+    }).done(function(response){
+        if (response.status == "ok") {
+            console.log('save edom berhasil');
+            $.alert({
+                title: 'Sukses!',
+                content: 'Data Evaluasi Berhasil Disimpan!',
+            });
+        } else {
+            console.log('gagal');
+            $.confirm({
+                title: 'Save data gagal!',
+                content: 'Periksa kembali, tidak boleh ada data yang kosong',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    Close: {
+                        text: 'Ok',
+                        btnClass: 'btn-red',
+                        action: function(){
+                        }
+                    }
+                }
+            });
+        }
+        
+    });
+    return false;
+}

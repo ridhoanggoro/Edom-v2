@@ -122,29 +122,49 @@ class Model_penting extends CI_model {
         $result = $this->db->delete('matakuliah');
         return $result;
     }
-	function save_edom()
+	function save_edom($d)
     {              
         $data = array(
-                'semester'       => $this->input->post('semester'), 
-                'prodi'          => $this->input->post('prodi'), 
-                'dosen'          => $this->input->post('dosen'),
-                'matkul'         => $this->input->post('matkul'),
-                'sks'            => $this->input->post('sks'),
-                'jawaban1'       => $this->input->post('no_1'), 
-                'jawaban2'       => $this->input->post('no_2'), 
-                'jawaban3'       => $this->input->post('no_3'),
-                'jawaban4'       => $this->input->post('no_4'), 
-                'jawaban5'       => $this->input->post('no_5'),  
-                'jawaban6'       => $this->input->post('no_6'), 
-                'jawaban7'       => $this->input->post('no_7'),  
-                'jawaban8'       => $this->input->post('no_8'), 
-                'jawaban9'       => $this->input->post('no_9'), 
-                'jawaban10'      => $this->input->post('no_10'),
-                'saran'          => $this->input->post('saran'),
+                'semester'       => $d->semester, 
+                'prodi'          => $d->prodi, 
+                'dosen'          => $d->dosen,
+                'matkul'         => $d->matkul,
+                'form_id'        => $d->form_id,
+                'sks'            => $d->sks,
+                'jawaban1'       => $d->no_1, 
+                'jawaban2'       => $d->no_2, 
+                'jawaban3'       => $d->no_3,
+                'jawaban4'       => $d->no_4, 
+                'jawaban5'       => $d->no_5,  
+                'jawaban6'       => $d->no_6, 
+                'jawaban7'       => $d->no_7,  
+                'jawaban8'       => $d->no_8, 
+                'jawaban9'       => $d->no_9, 
+                'jawaban10'      => $d->no_10,
+                'jawaban11'      => $d->no_11,
+                'jawaban12'      => $d->no_12,
+                'jawaban13'      => $d->no_13,
+                'jawaban14'      => $d->no_14,
+                'jawaban15'      => $d->no_15,
+                'jawaban16'      => $d->no_16,
+                'jawaban17'      => $d->no_17,
+                'jawaban18'      => $d->no_18,
+                'jawaban19'      => $d->no_19,
+                'jawaban20'      => $d->no_20,
+                'jawaban21'      => $d->no_21,
+                'jawaban22'      => $d->no_22,
+                'jawaban23'      => $d->no_23,
+                'jawaban24'      => $d->no_24,
+                'jawaban25'      => $d->no_25,
+                'saran'          => $d->saran,
+                'last_update'    => date('Y-m-d h:i:s A'),
                 'user_update'    => $this->session->userdata('userid')               
             );
-        $result=$this->db->insert('evaluasi',$data);
-        return $result;
+        $this->db->insert('evaluasi',$data);
+
+        $ret_val['status'] = "ok";
+        $ret_val['msg'] = "Insert data sukses...";
+        return $ret_val;
     }
 	
 	function ThnAkademikKuisioner()
@@ -241,6 +261,11 @@ class Model_penting extends CI_model {
             $query = $this->db->query($sql);
             return $query;
         }
+    }
+
+    function getAktifEdomForm(){
+        $this->db->where('status', '1');
+        return $this->db->get('form')->row_array();
     }
 
     function list_pertanyaan($start, $length, $draw, $search)

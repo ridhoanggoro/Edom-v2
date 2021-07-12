@@ -42,62 +42,10 @@
                 }
             });
         });
-
-        $('#btn_save').click(function() {
-            var semester = $('#semester').val();
-            var prodi = $('#prodi').val();
-            var dosen = $('#dosen').val();
-            var matkul = $('#matkul').val();
-            var sks = $('#sks').val();
-            var no_1 = $("input[name='no_1']:checked").val();
-            var no_2 = $("input[name='no_2']:checked").val();
-            var no_3 = $("input[name='no_3']:checked").val();
-            var no_4 = $("input[name='no_4']:checked").val();
-            var no_5 = $("input[name='no_5']:checked").val();
-            var no_6 = $("input[name='no_6']:checked").val();
-            var no_7 = $("input[name='no_7']:checked").val();
-            var no_8 = $("input[name='no_8']:checked").val();
-            var no_9 = $("input[name='no_9']:checked").val();
-            var no_10 = $("input[name='no_10']:checked").val();
-            var saran = $('#saran').val();
-            $.ajax({
-                url: '<?php echo base_url(); ?>admin/master/save_edom',
-                type: 'POST',
-                data: {
-                    semester: semester,
-                    prodi: prodi,
-                    dosen: dosen,
-                    matkul: matkul,
-                    sks: sks,
-                    no_1: no_1,
-                    no_2: no_2,
-                    no_3: no_3,
-                    no_4: no_4,
-                    no_5: no_5,
-                    no_6: no_6,
-                    no_7: no_7,
-                    no_8: no_8,
-                    no_9: no_9,
-                    no_10: no_10,
-                    saran: saran
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {                    
-                    $.alert({
-                        title: 'Gagal!',
-                        content: 'Data Belum Lengkap!',
-                    });
-                },
-                success: function(data) {
-                    $.alert({
-                        title: 'Sukses!',
-                        content: 'Data Input Berhasil Disimpan!',
-                    });
-                }
-            });
-        });
-    }); 
+}); 
 </script>
 
+<form name="f_edom" id="f_edom" onsubmit="return save_kuesioner();">
 <div class="row">
     <div class="col-lg-12">
         <div class="card shadow mb-4">
@@ -147,6 +95,7 @@
                     <div class="form-group col-md-1">
                         <label for="sks">SKS</label>
                         <input type="text" readonly="" class="form-control" id="sks" name="sks">
+                        <input type="hidden" class="form-control" value="<?php echo $id_form['seq_id']; ?>" id="form_id" name="form_id">
                     </div>
                 </div>
 
@@ -192,3 +141,4 @@
         </button>
     </div>
 </div>
+</form>

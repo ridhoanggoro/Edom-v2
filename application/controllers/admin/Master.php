@@ -79,8 +79,9 @@ class Master extends CI_Controller {
     echo json_encode($data);
   }
   function save_edom(){
-		$data=$this->model_penting->save_edom();
-		echo json_encode($data);
+    $p = json_decode(file_get_contents('php://input'));
+    $q = $this->model_penting->save_edom($p);
+    echo json_encode($q);
   }
   
   function get_matkul_prodi(){
@@ -205,6 +206,7 @@ class Master extends CI_Controller {
     $isi['daftar_prodi']  = $this->model_penting->getListProdi('ALL'); 
     $isi['daftar_dosen']  = $this->model_penting->getListDosen('ALL'); 
     $isi['list_pertanyaan'] = $this->model_penting->getListPertanyaan();
+    $isi['id_form'] = $this->model_penting->getAktifEdomForm();
     $this->load->view('overview', $isi);
   }
 
