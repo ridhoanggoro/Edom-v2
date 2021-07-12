@@ -7,12 +7,12 @@
 		<table class="table table-striped table-bordered" id="mydata" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-    			<th>No</th>
-          <th>NIDN</th>
-    			<th>Nama</th>
-    			<th>Nama Lengkap</th>
-    			<th>Role</th>
-    			<th style="text-align: right;">Menu</th>
+    			<th width="6%">No</th>
+          <th width="10%">NIDN</th>
+    			<th width="32%">Nama</th>
+    			<th width="32%">Nama Lengkap</th>
+    			<th width="10%">Role</th>
+    			<th width="10%" style="text-align: right;">Menu</th>
 			</tr>
 		</thead>
 		<tbody id="tampil_data">

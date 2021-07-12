@@ -9,13 +9,13 @@
 		<table class="table table-striped table-bordered" id="mydata" width="100%" cellspacing="0" id="mydata">
 		<thead>
 			<tr>
-        <th width="5%">No</th>
-        <th width="10%">ID Form</th>
-        <th width="40%">Nama Form</th>
-        <th width="10%">Status</th>
-        <th width="20%">Last Edit</th>
-        <th width="5%">UserID</th>
-        <th width="10%">Menu</th>
+                <th width="5%">No</th>
+                <th width="30%">ID Form</th>
+                <th width="25%">Nama Form</th>
+                <th width="10%">Status</th>
+                <th width="20%">Last Edit</th>
+                <th width="5%">UserID</th>
+                <th width="5%">Menu</th>
 			</tr>
 		</thead>
 		<tbody id="tampil_data">
