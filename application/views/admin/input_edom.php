@@ -115,7 +115,7 @@
                                 <label for='no_".$i."'><span class='badge badge-primary'>$i</span> ".$v->pertanyaan."</label><br/>";
                                 for ($j=1; $j <= 4 ; $j++) { 
                         echo "<div class='custom-control custom-radio custom-control-inline'>
-                                <input type='radio' id='no_".$i."_".$j."' name='no_".$i."' class='custom-control-input' value='".$j."'>
+                                <input type='radio' id='no_".$i."_".$j."' name='no_".$i."' class='custom-control-input' value='".$j."' required>
                                 <label class='custom-control-label' for='no_".$i."_".$j."'>".$j."</label>
                             </div>";
                     }
@@ -125,7 +125,7 @@
                 
                 <div class="form-group">
                     <label for="saran">Saran</label>
-                    <textarea class="form-control" id="saran" name="saran" rows="3"></textarea>
+                    <textarea class="form-control" id="saran" name="saran" rows="3" required></textarea>
                 </div>
             </div>
         </div>

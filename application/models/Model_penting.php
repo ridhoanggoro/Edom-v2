@@ -123,7 +123,33 @@ class Model_penting extends CI_model {
         return $result;
     }
 	function save_edom($d)
-    {              
+    {     
+        $no_1 = (isset($d->no_1)) ? $d->no_1 : null ; 
+        $no_2 = (isset($d->no_2)) ? $d->no_2 : null ;
+        $no_3 = (isset($d->no_3)) ? $d->no_3 : null ;
+        $no_4 = (isset($d->no_4)) ? $d->no_4 : null ;
+        $no_5 = (isset($d->no_5)) ? $d->no_5 : null ;
+        $no_6 = (isset($d->no_6)) ? $d->no_6 : null ;
+        $no_7 = (isset($d->no_7)) ? $d->no_7 : null ;
+        $no_8 = (isset($d->no_8)) ? $d->no_8 : null ;
+        $no_9 = (isset($d->no_9)) ? $d->no_9 : null ;
+        $no_10 = (isset($d->no_10)) ? $d->no_10 : null ;
+        $no_11 = (isset($d->no_11)) ? $d->no_11 : null ;
+        $no_12 = (isset($d->no_12)) ? $d->no_12 : null ;
+        $no_13 = (isset($d->no_13)) ? $d->no_13 : null ;
+        $no_14 = (isset($d->no_14)) ? $d->no_14 : null ;
+        $no_15 = (isset($d->no_15)) ? $d->no_15 : null ;
+        $no_16 = (isset($d->no_16)) ? $d->no_16 : null ;
+        $no_17 = (isset($d->no_17)) ? $d->no_17 : null ;
+        $no_18 = (isset($d->no_18)) ? $d->no_18 : null ;
+        $no_19 = (isset($d->no_19)) ? $d->no_19 : null ;
+        $no_20 = (isset($d->no_20)) ? $d->no_20 : null ;
+        $no_21 = (isset($d->no_21)) ? $d->no_21 : null ;
+        $no_22 = (isset($d->no_22)) ? $d->no_22 : null ;
+        $no_23 = (isset($d->no_23)) ? $d->no_23 : null ; 
+        $no_24 = (isset($d->no_24)) ? $d->no_24 : null ;
+        $no_25 = (isset($d->no_25)) ? $d->no_25 : null ;
+        
         $data = array(
                 'semester'       => $d->semester, 
                 'prodi'          => $d->prodi, 
@@ -131,37 +157,37 @@ class Model_penting extends CI_model {
                 'matkul'         => $d->matkul,
                 'form_id'        => $d->form_id,
                 'sks'            => $d->sks,
-                'jawaban1'       => $d->no_1, 
-                'jawaban2'       => $d->no_2, 
-                'jawaban3'       => $d->no_3,
-                'jawaban4'       => $d->no_4, 
-                'jawaban5'       => $d->no_5,  
-                'jawaban6'       => $d->no_6, 
-                'jawaban7'       => $d->no_7,  
-                'jawaban8'       => $d->no_8, 
-                'jawaban9'       => $d->no_9, 
-                'jawaban10'      => $d->no_10,
-                'jawaban11'      => $d->no_11,
-                'jawaban12'      => $d->no_12,
-                'jawaban13'      => $d->no_13,
-                'jawaban14'      => $d->no_14,
-                'jawaban15'      => $d->no_15,
-                'jawaban16'      => $d->no_16,
-                'jawaban17'      => $d->no_17,
-                'jawaban18'      => $d->no_18,
-                'jawaban19'      => $d->no_19,
-                'jawaban20'      => $d->no_20,
-                'jawaban21'      => $d->no_21,
-                'jawaban22'      => $d->no_22,
-                'jawaban23'      => $d->no_23,
-                'jawaban24'      => $d->no_24,
-                'jawaban25'      => $d->no_25,
+                'jawaban1'       => $no_1, 
+                'jawaban2'       => $no_2, 
+                'jawaban3'       => $no_3,
+                'jawaban4'       => $no_4, 
+                'jawaban5'       => $no_5,  
+                'jawaban6'       => $no_6, 
+                'jawaban7'       => $no_7,  
+                'jawaban8'       => $no_8, 
+                'jawaban9'       => $no_9, 
+                'jawaban10'      => $no_10,
+                'jawaban11'      => $no_11,
+                'jawaban12'      => $no_12,
+                'jawaban13'      => $no_13,
+                'jawaban14'      => $no_14,
+                'jawaban15'      => $no_15,
+                'jawaban16'      => $no_16,
+                'jawaban17'      => $no_17,
+                'jawaban18'      => $no_18,
+                'jawaban19'      => $no_19,
+                'jawaban20'      => $no_20,
+                'jawaban21'      => $no_21,
+                'jawaban22'      => $no_22,
+                'jawaban23'      => $no_23,
+                'jawaban24'      => $no_24,
+                'jawaban25'      => $no_25,
                 'saran'          => $d->saran,
                 'last_update'    => date('Y-m-d h:i:s A'),
                 'user_update'    => $this->session->userdata('userid')               
             );
         $this->db->insert('evaluasi',$data);
-
+        
         $ret_val['status'] = "ok";
         $ret_val['msg'] = "Insert data sukses...";
         return $ret_val;

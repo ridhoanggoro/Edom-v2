@@ -124,6 +124,7 @@ function save_kuesioner(){
         type: "POST",
         url: base_url+"admin/master/save_edom",
         data: JSON.stringify(form),
+        dataType: 'json',
         contentType: 'application/json; charset=utf-8',
     }).done(function(response){
         if (response.status == "ok") {
