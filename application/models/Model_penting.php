@@ -150,6 +150,32 @@ class Model_penting extends CI_model {
         $no_24 = (isset($d->no_24)) ? $d->no_24 : null ;
         $no_25 = (isset($d->no_25)) ? $d->no_25 : null ;
         
+        $kat_1 = (isset($d->kat_1)) ? $d->kat_1 : null ; 
+        $kat_2 = (isset($d->kat_2)) ? $d->kat_2 : null ;
+        $kat_3 = (isset($d->kat_3)) ? $d->kat_3 : null ;
+        $kat_4 = (isset($d->kat_4)) ? $d->kat_4 : null ;
+        $kat_5 = (isset($d->kat_5)) ? $d->kat_5 : null ;
+        $kat_6 = (isset($d->kat_6)) ? $d->kat_6 : null ;
+        $kat_7 = (isset($d->kat_7)) ? $d->kat_7 : null ;
+        $kat_8 = (isset($d->kat_8)) ? $d->kat_8 : null ;
+        $kat_9 = (isset($d->kat_9)) ? $d->kat_9 : null ;
+        $kat_10 = (isset($d->kat_10)) ? $d->kat_10 : null ;
+        $kat_11 = (isset($d->kat_11)) ? $d->kat_11 : null ;
+        $kat_12 = (isset($d->kat_12)) ? $d->kat_12 : null ;
+        $kat_13 = (isset($d->kat_13)) ? $d->kat_13 : null ;
+        $kat_14 = (isset($d->kat_14)) ? $d->kat_14 : null ;
+        $kat_15 = (isset($d->kat_15)) ? $d->kat_15 : null ;
+        $kat_16 = (isset($d->kat_16)) ? $d->kat_16 : null ;
+        $kat_17 = (isset($d->kat_17)) ? $d->kat_17 : null ;
+        $kat_18 = (isset($d->kat_18)) ? $d->kat_18 : null ;
+        $kat_19 = (isset($d->kat_19)) ? $d->kat_19 : null ;
+        $kat_20 = (isset($d->kat_20)) ? $d->kat_20 : null ;
+        $kat_21 = (isset($d->kat_21)) ? $d->kat_21 : null ;
+        $kat_22 = (isset($d->kat_22)) ? $d->kat_22 : null ;
+        $kat_23 = (isset($d->kat_23)) ? $d->kat_23 : null ; 
+        $kat_24 = (isset($d->kat_24)) ? $d->kat_24 : null ;
+        $kat_25 = (isset($d->kat_25)) ? $d->kat_25 : null ;
+
         $data = array(
                 'semester'       => $d->semester, 
                 'prodi'          => $d->prodi, 
@@ -187,6 +213,21 @@ class Model_penting extends CI_model {
                 'user_update'    => $this->session->userdata('userid')               
             );
         $this->db->insert('evaluasi',$data);
+
+        $q = $this->db->query("SELECT MAX(seq_id) maks FROM evaluasi")->row_array();
+        $id_akhir = $q['maks'];
+
+        $j = $d->jml_soal;
+        for ($i=0; $i < $j; $i++) { 
+            $data_details[] = array(
+                'seq_id' => $id_akhir,
+                'id_pertanyaan' => '', 
+                'kategori' => $kat_.$i,
+                'nilai' => $no_.$i
+            );
+        }
+
+        $this->db->insert_batch('evaluasi_kategori', $data_details);
         
         $ret_val['status'] = "ok";
         $ret_val['msg'] = "Insert data sukses...";

@@ -152,5 +152,7 @@ function save_kuesioner(){
         }
         
     });
+
+    //console.log(JSON.stringify(form));
     return false;
 }
