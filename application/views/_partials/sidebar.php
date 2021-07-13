@@ -44,6 +44,7 @@
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'pengisian_edom' ? 'active': '' ?>" href="<?php echo site_url('admin/master/pengisian_edom'); ?>">Input Edom</a>
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'laporan' ? 'active': '' ?>" href="<?php echo site_url('admin/master/laporan'); ?>">Grafik Edom</a>
         <a class="collapse-item <?php echo $this->uri->segment(3) == 'report_edom' ? 'active': '' ?>" href="<?php echo site_url('admin/master/report_edom'); ?>">Report Edom</a>
+        <a class="collapse-item <?php echo $this->uri->segment(3) == 'report_borang' ? 'active': '' ?>" href="<?php echo site_url('admin/master/report_borang'); ?>">Report Borang</a>
       </div>
     </div>
   </li>

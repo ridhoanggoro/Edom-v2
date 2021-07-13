@@ -37,7 +37,7 @@
             <hr/>
             </div>
         </div>
-        <select multiple="multiple" size="10" name="listpertanyaan[]" title="listpertanyaan[]">
+        <select multiple="multiple" size="10" name="listpertanyaan" title="listpertanyaan">
         <?php foreach ($daftar_pertanyaan->result() as $value)  { ?>
         <option value="<?php echo $value->seq_id; ?>" <?php foreach ($form_detail->result_array() as $row ) { if ($value->seq_id == $row['id_pertanyaan']) echo 'selected="selected"'; } ?>><?php echo $value->no.'-'.character_limiter($value->pertanyaan,100); ?></option>
         <?php } ?>
@@ -56,7 +56,7 @@
 </div>
 
 <script>
-    var mylist = $('select[name="listpertanyaan[]"]').bootstrapDualListbox({
+    var mylist = $('select[name="listpertanyaan"]').bootstrapDualListbox({
         nonSelectedListLabel: 'Pertanyaan Tersedia',
         selectedListLabel: 'Pertanyaan Dipilih',
         preserveSelectionOnMove: 'moved',
