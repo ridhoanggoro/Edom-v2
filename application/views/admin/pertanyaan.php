@@ -68,11 +68,11 @@
                             <label for="kategori">Kategori</label>
                             <select class="form-control form-control-chosen" name="kategori" id="kategori" required>
                             <option value="">-- Pilih --</option>
-                            <option value="Tangible">Tangible</option>
-                            <option value="Reliability">Reliability</option>
-                            <option value="Responsive">Responsive</option>
-                            <option value="Assurance">Assurance</option>
-                            <option value="Empathy">Empathy</option>
+                            <option value="1. Reliability">Reliability</option>
+                            <option value="2. Responsive">Responsive</option>
+                            <option value="3. Assurance">Assurance</option>
+                            <option value="4. Empathy">Empathy</option>
+                            <option value="5. Tangible">Tangible</option>
                             <option value="-">-</option>
                             </select>
                         </div>
@@ -121,11 +121,11 @@
                             <label for="kategori_edit">Kategori</label>
                             <select class="form-control form-control-chosen" name="kategori_edit" id="kategori_edit" required>
                                 <option value="">-- Pilih --</option>
-                                <option value="Tangible">Tangible</option>
-                                <option value="Reliability">Reliability</option>
-                                <option value="Responsive">Responsive</option>
-                                <option value="Assurance">Assurance</option>
-                                <option value="Empathy">Empathy</option>
+                                <option value="1. Reliability">Reliability</option>
+                                <option value="2. Responsive">Responsive</option>
+                                <option value="3. Assurance">Assurance</option>
+                                <option value="4. Empathy">Empathy</option>
+                                <option value="5. Tangible">Tangible</option>
                                 <option value="-">-</option>
                             </select>
                         </div>
