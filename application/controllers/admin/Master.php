@@ -257,6 +257,7 @@ class Master extends CI_Controller
         $prodi            = $this->input->post('prodi');
         $semester         = $this->input->post('thn_akademik');
         $jenis            = $this->input->post('jenis');
+        $pertanyaan       = $this->input->post('jml');
         $data['semester'] = $semester;
         
         $this->load->library('pdf');
@@ -281,8 +282,12 @@ class Master extends CI_Controller
         }
         
         if ($jenis == 1) {
-            $data['hasil'] = $this->model_penting->data_report_edom($periode, $prodi);
-            $template      = 'dokumen/edom';
+            if ($pertanyaan == "10"){
+                $template = "dokumen/edom";
+            } else {
+                $template = "dokumen/edom_15";
+            }
+            $data['hasil'] = $this->model_penting->data_report_edom($periode, $prodi, $pertanyaan);
             $nama_file     = 'REPORT_EDOM_PENILAIAN';
         } else {
             $data['hasil'] = $this->model_penting->data_report_edom_saran($periode, $prodi);

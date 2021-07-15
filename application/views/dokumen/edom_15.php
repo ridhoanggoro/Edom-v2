@@ -55,11 +55,11 @@ table thead td { background-color: #EEEEEE;
       <td width="5%" rowspan="3" align="center" >No</td>
       <td width="20%" rowspan="3" align="center" >Nama Dosen</td>
       <td width="20%" rowspan="3" align="center" >Mata Kuliah yang diampu</td>
-      <td width="60%" colspan="10" align="center" >Kinerja Dosen Berdasarkan Kompetensi EDOM</td>
+      <td width="60%" colspan="15" align="center" >Kinerja Dosen Berdasarkan Kompetensi EDOM</td>
       <td width="5%" rowspan="3" align="center" >Nilai Akhir EKD Total</td>
     </tr>
     <tr>
-      <td colspan="10" align="center" >Pertanyaan</td>
+      <td colspan="15" align="center" >Pertanyaan</td>
     </tr>
     <tr>
       <td align="center">1</td>
@@ -72,8 +72,13 @@ table thead td { background-color: #EEEEEE;
       <td align="center">8</td>
       <td align="center">9</td>
       <td align="center">10</td>
+      <td align="center">11</td>
+      <td align="center">12</td>
+      <td align="center">13</td>
+      <td align="center">14</td>
+      <td align="center">15</td>
     </tr>
-    <?php $no = 1; foreach ($hasil->result() as $row) { $total = $row->jawaban1 + $row->jawaban2 + $row->jawaban3 + $row->jawaban4 + $row->jawaban5 + $row->jawaban6 + $row->jawaban7 + $row->jawaban8 + $row->jawaban9 + $row->jawaban10; ?>
+    <?php $no = 1; foreach ($hasil->result() as $row) { $total = $row->jawaban1 + $row->jawaban2 + $row->jawaban3 + $row->jawaban4 + $row->jawaban5 + $row->jawaban6 + $row->jawaban7 + $row->jawaban8 + $row->jawaban9 + $row->jawaban10 + $row->jawaban11 + $row->jawaban12 + $row->jawaban13 + $row->jawaban14 + $row->jawaban15; ?>
     <tr>
       <td align="center" ><?php echo $no++; ?></td>
       <td><?php echo $row->nama; ?></td>
@@ -88,7 +93,12 @@ table thead td { background-color: #EEEEEE;
       <td align="center"><?php echo number_format($row->jawaban8,2,'.',','); ?></td>
       <td align="center"><?php echo number_format($row->jawaban9,2,'.',','); ?></td>
       <td align="center"><?php echo number_format($row->jawaban10,2,'.',','); ?></td>
-      <td align="center"><?php echo number_format($total/10,2,'.',','); ?></td>
+      <td align="center"><?php echo number_format($row->jawaban11,2,'.',','); ?></td>
+      <td align="center"><?php echo number_format($row->jawaban12,2,'.',','); ?></td>
+      <td align="center"><?php echo number_format($row->jawaban13,2,'.',','); ?></td>
+      <td align="center"><?php echo number_format($row->jawaban14,2,'.',','); ?></td>
+      <td align="center"><?php echo number_format($row->jawaban15,2,'.',','); ?></td>
+      <td align="center"><?php echo number_format($total/15,2,'.',','); ?></td>
     </tr>
     <?php } ?>
   </tbody>

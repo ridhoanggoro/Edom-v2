@@ -5,7 +5,7 @@
   </div>
   <div class="card-body">
     <div class="form-row">
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
         <label for="thn_akademik">Tahun Ajaran</label>
         <select class="form-control form-control-chosen" name="thn_akademik" id="thn_akademik" <?php echo 'onchange="load_dropdown_content($(\'#nidn\'), this.value)"' ?> required>
           <option value="">-- Pilih --</option>
@@ -24,6 +24,15 @@
         <?php } ?>
         </select>
         <div class="invalid-feedback">Harap Pilih Prodi</div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="jml">Pertanyaan</label>
+        <select class="form-control form-control-chosen" name="jml" id="jml" required>
+          <option value="">-- Pilih --</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+        <div class="invalid-feedback">Harap Pilih Jumlah Pertanyaan</div>
       </div>
     </div>
     <div class="form-group">

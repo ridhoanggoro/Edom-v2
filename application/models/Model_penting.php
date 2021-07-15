@@ -556,9 +556,14 @@ class Model_penting extends CI_model {
     }    
     
     
-    function data_report_edom($semester, $prodi)
+    function data_report_edom($semester, $prodi, $jml)
     {
-        $sql = "SELECT AVG(eva.jawaban1) as jawaban1, AVG(eva.jawaban2) as jawaban2, AVG(eva.jawaban3) as jawaban3, AVG(eva.jawaban4) as jawaban4, AVG(eva.jawaban5) as jawaban5, AVG(eva.jawaban6) as jawaban6, AVG(eva.jawaban7) as jawaban7, AVG(eva.jawaban8) as jawaban8, AVG(eva.jawaban9) as jawaban9, AVG(eva.jawaban10) as jawaban10, AVG(eva.jawaban11) AS jawaban11, AVG(eva.jawaban12) AS jawaban12, AVG(eva.jawaban13) AS jawaban13, AVG(eva.jawaban14) AS jawaban14, AVG(eva.jawaban15) AS jawaban15, dos.nama, mk.nama_matkul FROM `evaluasi` eva INNER JOIN dosen dos ON eva.dosen=dos.kd_dosen INNER JOIN prodi pro ON pro.kd_prodi=eva.prodi INNER JOIN matakuliah mk ON mk.kd_matkul=eva.matkul AND mk.prodi='$prodi' WHERE eva.semester='$semester' AND pro.kd_prodi='$prodi' GROUP BY dos.nama, mk.kd_matkul";
+        if ($jml == "10") {
+            $sql = "SELECT AVG(eva.jawaban1) as jawaban1, AVG(eva.jawaban2) as jawaban2, AVG(eva.jawaban3) as jawaban3, AVG(eva.jawaban4) as jawaban4, AVG(eva.jawaban5) as jawaban5, AVG(eva.jawaban6) as jawaban6, AVG(eva.jawaban7) as jawaban7, AVG(eva.jawaban8) as jawaban8, AVG(eva.jawaban9) as jawaban9, AVG(eva.jawaban10) as jawaban10, dos.nama, mk.nama_matkul FROM `evaluasi` eva INNER JOIN dosen dos ON eva.dosen=dos.kd_dosen INNER JOIN prodi pro ON pro.kd_prodi=eva.prodi INNER JOIN matakuliah mk ON mk.kd_matkul=eva.matkul AND mk.prodi='$prodi' WHERE eva.semester='$semester' AND pro.kd_prodi='$prodi' GROUP BY dos.nama, mk.kd_matkul";
+        } else {
+            $sql = "SELECT AVG(eva.jawaban1) as jawaban1, AVG(eva.jawaban2) as jawaban2, AVG(eva.jawaban3) as jawaban3, AVG(eva.jawaban4) as jawaban4, AVG(eva.jawaban5) as jawaban5, AVG(eva.jawaban6) as jawaban6, AVG(eva.jawaban7) as jawaban7, AVG(eva.jawaban8) as jawaban8, AVG(eva.jawaban9) as jawaban9, AVG(eva.jawaban10) as jawaban10, AVG(eva.jawaban11) AS jawaban11, AVG(eva.jawaban12) AS jawaban12, AVG(eva.jawaban13) AS jawaban13, AVG(eva.jawaban14) AS jawaban14, AVG(eva.jawaban15) AS jawaban15, dos.nama, mk.nama_matkul FROM `evaluasi` eva INNER JOIN dosen dos ON eva.dosen=dos.kd_dosen INNER JOIN prodi pro ON pro.kd_prodi=eva.prodi INNER JOIN matakuliah mk ON mk.kd_matkul=eva.matkul AND mk.prodi='$prodi' WHERE eva.semester='$semester' AND pro.kd_prodi='$prodi' GROUP BY dos.nama, mk.kd_matkul";
+        }
+        
         
         return $this->db->query($sql);
     }
