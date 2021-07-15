@@ -112,6 +112,7 @@
                             <div class='card-body'>
                             <div class='form-group'>
                             <input type='hidden' name='kat_".$i."' value='".$v->kategori."'>
+                            <input type='hidden' name='idp_".$i."' value='".$v->seq_id."'>
                                 <label for='no_".$i."'><span class='badge badge-primary'>$i</span> ".$v->pertanyaan."</label><br/>";
                                 for ($j=1; $j <= 4 ; $j++) { 
                         echo "<div class='custom-control custom-radio custom-control-inline'>

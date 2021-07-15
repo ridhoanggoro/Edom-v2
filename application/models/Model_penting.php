@@ -176,6 +176,32 @@ class Model_penting extends CI_model {
         $kat_24 = (isset($d->kat_24)) ? $d->kat_24 : null ;
         $kat_25 = (isset($d->kat_25)) ? $d->kat_25 : null ;
 
+        $idp_1 = (isset($d->idp_1)) ? $d->idp_1 : null ; 
+        $idp_2 = (isset($d->idp_2)) ? $d->idp_2 : null ;
+        $idp_3 = (isset($d->idp_3)) ? $d->idp_3 : null ;
+        $idp_4 = (isset($d->idp_4)) ? $d->idp_4 : null ;
+        $idp_5 = (isset($d->idp_5)) ? $d->idp_5 : null ;
+        $idp_6 = (isset($d->idp_6)) ? $d->idp_6 : null ;
+        $idp_7 = (isset($d->idp_7)) ? $d->idp_7 : null ;
+        $idp_8 = (isset($d->idp_8)) ? $d->idp_8 : null ;
+        $idp_9 = (isset($d->idp_9)) ? $d->idp_9 : null ;
+        $idp_10 = (isset($d->idp_10)) ? $d->idp_10 : null ;
+        $idp_11 = (isset($d->idp_11)) ? $d->idp_11 : null ;
+        $idp_12 = (isset($d->idp_12)) ? $d->idp_12 : null ;
+        $idp_13 = (isset($d->idp_13)) ? $d->idp_13 : null ;
+        $idp_14 = (isset($d->idp_14)) ? $d->idp_14 : null ;
+        $idp_15 = (isset($d->idp_15)) ? $d->idp_15 : null ;
+        $idp_16 = (isset($d->idp_16)) ? $d->idp_16 : null ;
+        $idp_17 = (isset($d->idp_17)) ? $d->idp_17 : null ;
+        $idp_18 = (isset($d->idp_18)) ? $d->idp_18 : null ;
+        $idp_19 = (isset($d->idp_19)) ? $d->idp_19 : null ;
+        $idp_20 = (isset($d->idp_20)) ? $d->idp_20 : null ;
+        $idp_21 = (isset($d->idp_21)) ? $d->idp_21 : null ;
+        $idp_22 = (isset($d->idp_22)) ? $d->idp_22 : null ;
+        $idp_23 = (isset($d->idp_23)) ? $d->idp_23 : null ; 
+        $idp_24 = (isset($d->idp_24)) ? $d->idp_24 : null ;
+        $idp_25 = (isset($d->idp_25)) ? $d->idp_25 : null ;
+
         $data = array(
                 'semester'       => $d->semester, 
                 'prodi'          => $d->prodi, 
@@ -216,14 +242,16 @@ class Model_penting extends CI_model {
 
         $q = $this->db->query("SELECT MAX(seq_id) maks FROM evaluasi")->row_array();
         $id_akhir = $q['maks'];
-
+        $kategori = array($kat_1, $kat_2, $kat_3, $kat_4, $kat_5, $kat_6, $kat_7, $kat_8, $kat_9, $kat_10, $kat_11, $kat_12, $kat_13, $kat_14, $kat_15, $kat_16, $kat_17, $kat_18, $kat_19, $kat_20, $kat_21, $kat_22, $kat_23, $kat_24, $kat_25);
+        $nilai = array($no_1, $no_2, $no_3, $no_4, $no_5, $no_6, $no_7, $no_8, $no_9, $no_10, $no_11, $no_12, $no_13, $no_14, $no_15, $no_16, $no_17, $no_18, $no_19, $no_20, $no_21, $no_22, $no_23, $no_24, $no_25);
+        $pertanyaan = array($idp_1, $idp_2, $idp_3, $idp_4, $idp_5, $idp_6, $idp_7, $idp_8, $idp_9, $idp_10, $idp_11, $idp_12, $idp_13, $idp_14, $idp_15, $idp_16, $idp_17, $idp_18, $idp_19, $idp_20, $idp_21, $idp_22, $idp_23, $idp_24, $idp_25);
         $j = $d->jml_soal;
         for ($i=0; $i < $j; $i++) { 
             $data_details[] = array(
                 'seq_id' => $id_akhir,
-                'id_pertanyaan' => '', 
-                'kategori' => $kat_.$i,
-                'nilai' => $no_.$i
+                'id_pertanyaan' => $pertanyaan[$i], 
+                'kategori' => $kategori[$i],
+                'nilai' => $nilai[$i]
             );
         }
 
@@ -570,6 +598,21 @@ class Model_penting extends CI_model {
                     ON X.dosen = dos.kd_dosen
                 ORDER BY overall_row_num";
         
+        return $this->db->query($sql);
+    }
+
+    function data_report_borang($semester, $prodi)
+    {
+        $sql = "SELECT ek.kategori,
+        SUM(CASE WHEN ek.nilai=4 THEN 1 ELSE 0 END) AS sangat_baik,
+        SUM(CASE WHEN ek.nilai=3 THEN 1 ELSE 0 END) AS baik,
+        SUM(CASE WHEN ek.nilai=2 THEN 1 ELSE 0 END) AS cukup,
+        SUM(CASE WHEN ek.nilai=1 THEN 1 ELSE 0 END) AS kurang
+        from evaluasi e
+        INNER JOIN evaluasi_kategori ek ON ek.seq_id=e.seq_id
+        WHERE e.semester='$semester' AND e.prodi='$prodi'
+        GROUP BY ek.kategori";
+
         return $this->db->query($sql);
     }
 

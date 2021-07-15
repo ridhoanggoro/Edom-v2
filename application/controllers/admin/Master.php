@@ -312,11 +312,11 @@ class Master extends CI_Controller
     {
         $periode          = $this->input->post('thn_akademik');
         $prodi            = $this->input->post('prodi');
-        $data['semester'] = $semester;
+        $data['semester'] = $periode;
         
         $this->load->library('pdf');
         $pdf                   = $this->pdf->load();
-        $pdf                   = new mPDF('win-1252', 'A4-L', '', '', 10, 10, 15, 1, 30, 30);
+        $pdf                   = new mPDF('win-1252', 'A4', '', '', 10, 10, 15, 1, 30, 30);
         $pdf->useOnlyCoreFonts = false;
         $pdf->SetTitle("EDOM");
         $pdf->SetAuthor("Universitas Pancasila");
@@ -332,16 +332,10 @@ class Master extends CI_Controller
             }
         }
         
-        if ($jenis == 1) {
-            $data['hasil'] = $this->model_penting->data_report_edom($periode, $prodi);
-            $template      = 'dokumen/edom';
-            $nama_file     = 'REPORT_EDOM_PENILAIAN';
-        } else {
-            $data['hasil'] = $this->model_penting->data_report_edom_saran($periode, $prodi);
-            $template      = 'dokumen/edom_saran';
-            $nama_file     = 'REPORT_EDOM_SARAN';
-        }
-        
+        $data['hasil'] = $this->model_penting->data_report_borang($periode, $prodi);
+        $template      = 'dokumen/edom_borang';
+        $nama_file     = 'REPORT_EDOM_BORANG_PENILAIAN';
+
         $this->load->view($template, $data);
         $html = $this->load->view($template, $data, true);
         $pdf->WriteHTML($html);
