@@ -639,7 +639,7 @@ class Model_penting extends CI_model {
 	// CEK LOGIN
 	function validate($userid,$password)
 	{			
-		$sql = "SELECT user_info.*,dosen.* FROM user_info INNER JOIN dosen on user_info.kd_dosen=dosen.kd_dosen WHERE user_info.userid='$userid' AND user_info.pwd='$password' ";
+		$sql = "SELECT user_info.*,dosen.* FROM user_info INNER JOIN dosen on user_info.kd_dosen=dosen.kd_dosen WHERE user_info.userid='".$this->db->escape_str($userid)."' AND user_info.pwd='".$this->db->escape_str($password)."' ";
 		$result = $this->db->query($sql);
 		return $result;
 	}
